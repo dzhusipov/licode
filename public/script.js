@@ -65,7 +65,7 @@ function start_video(){
             callback(req.responseText);
           }
       };
-      req.open('POST', url, true);
+      req.open('POST', url, false);
       req.setRequestHeader('Content-Type', 'application/json');
       req.send(JSON.stringify(body));
     }
