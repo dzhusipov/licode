@@ -148,7 +148,7 @@ app.post('/createRoom/', function(req, res){
 
 app.post('/createToken/', function(req, res){
     "use strict";
-    var room = req.body.room;
+    var room = req.body.roomName;
     var username = req.body.username;
     var role = req.body.role;
     N.API.createToken(room, username, role, function(token) {
