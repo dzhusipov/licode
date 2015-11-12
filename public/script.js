@@ -54,20 +54,7 @@ function start_video(){
   }
   localStream = Erizo.Stream(config);
 
-  var createToken = function(userName, role, callback) {
-
-    var req = new XMLHttpRequest();
-    var url = serverUrl + 'createToken/';
-    
-    var params = getSearchParameters();
-    roomName = params.roomName;
-    
-
-    if (roomName == "" || roomName == undefined){
-        roomName = "testroom";
-    }
-    console.log(roomName);
-    /*----------------------------------------*/
+  /*----------------------------------------*/
     var getRoomIDFromServerRequest = function (roomName, callback){
       var req = new XMLHttpRequest();
       var url = serverUrl + 'getRoomByName/';
@@ -86,6 +73,21 @@ function start_video(){
         roomIdFromName = response;
     });
     /*----------------------------------------*/
+  
+  var createToken = function(userName, role, callback) {
+
+    var req = new XMLHttpRequest();
+    var url = serverUrl + 'createToken/';
+    
+    var params = getSearchParameters();
+    roomName = params.roomName;
+    
+
+    if (roomName == "" || roomName == undefined){
+        roomName = "testroom";
+    }
+    console.log(roomName);
+    
     console.log('Room Name is : ' + roomIdFromName);
 
     var body = {username: userName, role: role, roomName: roomIdFromName};
