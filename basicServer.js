@@ -145,29 +145,30 @@ app.post('/createRoom/', function(req, res){
     });
 });
 
+app.post('/getRoomByName/', function(req, res){
+    "use strict";
+
+    var roomNameForSearch = req.body.roomName;
+
+    N.API.getRooms(function(roomlist) {
+            var rooms = JSON.parse(roomlist);
+            console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
+            for (var room in rooms) {
+                if (rooms[room].name === roomNameForSearch){
+                        console.log(rooms[room]._id);
+                        res.send(rooms[room]._id);
+                }
+            }
+    });
+});
 
 app.post('/createToken/', function(req, res){
     "use strict";
     console.log("createToken---------------------------------------------");
-    var roomNameForSearch = req.body.roomName;
-    var roomID4Token;
-    console.log("ya zdesya");
-    N.API.getRooms(function(roomlist) {
-            console.log("getRooms---------------------------------------------");
-            var rooms = JSON.parse(roomlist);
-            console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
-            for (var room in rooms) {
-                console.log("for to do---------------------------------------------");
-                if (rooms[room].name === roomNameForSearch){
-                        console.log("find the room---------------------------------------------");
-                        roomID4Token =  rooms[room]._id;
-                }
-            }
-    });
     
-    var room = roomID4Token;
+    var room = req.body.roomName;
     console.log("room:"+room);
-    /*
+    
     var username = req.body.username;
     var role = req.body.role;
     N.API.createToken(room, username, role, function(token) {
@@ -175,7 +176,7 @@ app.post('/createToken/', function(req, res){
     }, function (e) {
         console.log('Error: ', e);
     });
-    */
+    
 });
 
 

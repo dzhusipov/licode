@@ -69,10 +69,28 @@ function start_video(){
     if (roomName == "" || roomName == undefined){
         roomName = "testroom";
     }
+    /*----------------------------------------*/
+    var getRoomIDFromServerRequest = function getRoomIDFromServerRequest(roomName, callback){
+      var req = new XMLHttpRequest();
+      var url = serverUrl + 'getRoomByName/';
+      var body = {roomName: roomName};
+      req.onreadystatechange = function () {
+          if (req.readyState === 4) {
+            callback(req.responseText);
+          }
+      };
+      req.open('POST', url, true);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.send(JSON.stringify(body));
+    }
+     var roomIdFromName;
+    getRoomIDFromServerRequest("roomName", function (response) {
+        roomIdFromName = response;
+    });
+    /*----------------------------------------*/
+    console.log('Room Name is : ' + roomIdFromName);
 
-    console.log('Room Name is : ' + roomName);
-
-    var body = {username: userName, role: role, roomName: roomName};
+    var body = {username: userName, role: role, roomName: roomIdFromName};
 
     req.onreadystatechange = function () {
       if (req.readyState === 4) {
