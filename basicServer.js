@@ -61,7 +61,8 @@ app.get('/dasm/', function(req, res){
     var roomID;
     N.API.getRooms(function(roomlist) {
             var rooms = JSON.parse(roomlist);
-            console.log(rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
+            console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
+            console.log("Default Room Name is " + roomName);
             for (var room in rooms) {
                 if (rooms[room].name === roomName){
                         roomID = rooms[room]._id;

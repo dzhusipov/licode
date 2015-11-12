@@ -64,6 +64,9 @@ function start_video(){
     var req = new XMLHttpRequest();
     var url = serverUrl + 'createToken/';
     var roomName = window.location.search.replace("?", "");
+    if (roomName == "" || roomName == undefined){
+        roomName = "testroom";
+    }
     var body = {username: userName, role: role, roomName: roomName};
 
     req.onreadystatechange = function () {
