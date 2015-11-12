@@ -72,9 +72,10 @@ function start_video(){
     
     getRoomIDFromServerRequest(roomName, function (response) {
         roomIdFromName = response;
+        document.getElementById('RoomID').value = roomIdFromName;
     });
     /*----------------------------------------*/
-  
+
   var createToken = function(userName, role, callback) {
 
     var req = new XMLHttpRequest();
@@ -87,7 +88,7 @@ function start_video(){
         roomName = "testroom";
     }
     console.log(roomName);
-    
+    roomIdFromName = document.getElementById('RoomID').value;
     console.log('Room Name is : ' + roomIdFromName);
 
     var body = {username: userName, role: role, roomName: roomIdFromName};
