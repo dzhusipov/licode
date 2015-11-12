@@ -157,7 +157,7 @@ app.post('/createToken/', function(req, res){
             var rooms = JSON.parse(roomlist);
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
             for (var room in rooms) {
-                onsole.log("for to do---------------------------------------------");
+                console.log("for to do---------------------------------------------");
                 if (rooms[room].name === roomNameForSearch){
                         console.log("find the room---------------------------------------------");
                         roomID4Token =  rooms[room]._id;
