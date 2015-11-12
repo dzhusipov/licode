@@ -44,7 +44,8 @@ var roomName;
 console.log(__dirname);
 
 app.get('/dasm/:roomName', function(req, res){
-    roomName = req.params.roomName;
+    roomName = req.params.roomName; 
+    
     if (roomName == ""){
         roomName = "testroom";
     }
