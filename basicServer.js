@@ -41,7 +41,7 @@ N.API.init(config.nuve.superserviceID, config.nuve.superserviceKey, 'http://loca
 
 var myRoom;
 var roomName;
-var roomID;
+var roomIDForMe;
 console.log(__dirname);
 
 app.get('/dasm/', function(req, res){
@@ -66,11 +66,11 @@ app.get('/dasm/', function(req, res){
             console.log("Default Room Name is " + roomName);
             for (var room in rooms) {
                 if (rooms[room].name === roomName){
-                        roomID = rooms[room]._id;
+                        roomIDForMe = rooms[room]._id;
                         console.log("yeeeee we find room " + roomName);
                 }
             }
-            if (!roomName) {
+            if (!roomIDForMe) {
 
                 N.API.createRoom(roomName, function(roomID) {
                         console.log('Created room with id: ', roomID._id);
