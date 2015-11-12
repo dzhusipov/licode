@@ -38,10 +38,7 @@ window.onbeforeunload = function (evt) {
 }
 
 window.onload = function () {
-    console.log('onload event');
-};
-
-function start_video(){
+  console.log('onload event');
 
   console.log('starting video');
   recording = false;
