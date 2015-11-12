@@ -43,7 +43,7 @@ var roomName;
 console.log('dasm');
 
 
-app.get('/rooname/:roomName', function(req, res) {
+app.get('/roomname/:roomName', function(req, res) {
 	console.log('dasm1');
     	"use strict";
 	roomName = req.params.roomName;
@@ -69,6 +69,7 @@ app.get('/rooname/:roomName', function(req, res) {
         		console.log('Using room', roomName);
     		}
 	});
+    res.sendFile(path.join(__dirname+'/index.html'));
 
 });
 
