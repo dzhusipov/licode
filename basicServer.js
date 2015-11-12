@@ -69,7 +69,7 @@ app.get('/roomname/:roomName', function(req, res) {
         		console.log('Using room', roomName);
     		}
 	});
-    res.sendFile('/index.html');
+    res.sendFile('index.html');
 
 });
 
