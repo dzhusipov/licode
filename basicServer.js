@@ -41,6 +41,7 @@ N.API.init(config.nuve.superserviceID, config.nuve.superserviceKey, 'http://loca
 
 var myRoom;
 var roomName;
+var roomID;
 console.log(__dirname);
 
 app.get('/dasm/', function(req, res){
@@ -58,7 +59,7 @@ app.get('/dasm/', function(req, res){
     });
 
     // we getting rooms and try search room eq. if find? then we attach to it
-    var roomID;
+    
     N.API.getRooms(function(roomlist) {
             var rooms = JSON.parse(roomlist);
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
