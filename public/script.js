@@ -68,6 +68,7 @@ function start_video(){
     console.log('Room Name is : ' + roomName);
     var params = getSearchParameters();
     roomName = params.roomName;
+    console.log(roomName);
     if (roomName == "" || roomName == undefined){
         roomName = "testroom";
     }
