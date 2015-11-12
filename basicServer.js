@@ -40,7 +40,7 @@ N.API.init(config.nuve.superserviceID, config.nuve.superserviceKey, 'http://loca
 
 var myRoom;
 var roomName;
-console.log('dasm');
+console.log(__dirname);
 
 
 app.get('/roomname/:roomName', function(req, res) {
