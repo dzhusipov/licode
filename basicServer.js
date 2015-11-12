@@ -44,7 +44,7 @@ var roomName;
 console.log(__dirname);
 
 app.get('/', function(req, res){
-  res.send('id: ' + req.query.id);
+  res.sendfile(__dirname + '/server/room.html');
 });
 
 app.get('/asdasdasd/:roomName', function(req, res) {
