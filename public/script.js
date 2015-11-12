@@ -1,6 +1,7 @@
 var serverUrl = "/";
 var localStream, room, recording, recordingId, globalToken;
-
+var roomName;
+var roomIdFromName;
 
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -36,7 +37,6 @@ window.onbeforeunload = function (evt) {
   return "Если вы закончили, можете закрывать.";
 }
 
-var roomName;
 
 window.onload = function () {
     console.log('onload event');
@@ -83,7 +83,7 @@ function start_video(){
       req.setRequestHeader('Content-Type', 'application/json');
       req.send(JSON.stringify(body));
     }
-    var roomIdFromName;
+    
     getRoomIDFromServerRequest(roomName, function (response) {
         roomIdFromName = response;
     });

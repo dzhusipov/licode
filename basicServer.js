@@ -147,7 +147,7 @@ app.post('/createRoom/', function(req, res){
 
 app.post('/getRoomByName/', function(req, res){
     "use strict";
-
+    console.log("getRoomByName");
     var roomNameForSearch = req.body.roomName;
 
     N.API.getRooms(function(roomlist) {
