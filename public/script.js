@@ -49,6 +49,7 @@ window.onload = function () {
 };
 
 function start_video(){
+
   console.log('starting video');
   recording = false;
   var screen = getParameterByName("screen");
@@ -59,11 +60,12 @@ function start_video(){
     config.extensionId = "okeephmleflklcdebijnponpabbmmgeo";
   }
   localStream = Erizo.Stream(config);
+
   var createToken = function(userName, role, callback) {
 
     var req = new XMLHttpRequest();
     var url = serverUrl + 'createToken/';
-    var roomName = window.location.search.replace("?", "");
+    console.log('Room Name is : ' + roomName);
     if (roomName == "" || roomName == undefined){
         roomName = "testroom";
     }
