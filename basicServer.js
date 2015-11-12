@@ -95,15 +95,13 @@ app.get('/deleteAllRooms/', function(req, res) {
                 var roomID2Del =  rooms[room]._id;
                 N.API.deleteRoom(roomID2Del, function(result) {
                     console.log('Result: ', result);
-                    res.send('Result: ' + result);
                 }, function (e) {
                     console.log('Error: ', e);
-                    res.send('Error: ' + e);
                 });
             }
     });
+    res.send('Done');
 });
-
 
 app.get('/deleteRooms/', function(req, res) {
     "use strict";
