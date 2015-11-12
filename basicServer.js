@@ -78,7 +78,7 @@ app.get('/dasm/', function(req, res){
                 });
 
             } else {
-                console.log('Using room', roomID);
+                console.log('Using room', roomIDForMe);
                 console.log('Room Name', roomName);
             }
     });
