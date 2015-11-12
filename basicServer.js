@@ -24,6 +24,7 @@ app.use(errorhandler({
     dumpExceptions: true,
     showStack: true
 }));
+
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
@@ -43,7 +44,7 @@ var roomName;
 console.log(__dirname);
 
 
-app.get('/', function(req, res) {
+app.get('/?:roomName', function(req, res) {
 	console.log('dasm1');
     	"use strict";
 	roomName = req.params.roomName;
