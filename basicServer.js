@@ -44,7 +44,9 @@ var roomName;
 console.log(__dirname);
 
 app.get('/dasm/', function(req, res){
-  res.sendfile(__dirname + '/server/room.html');
+  res.sendFile(__dirname + '/server/room.html', {
+        isMain: true
+    });
 });
 
 app.get('/asdasdasd/:roomName', function(req, res) {
