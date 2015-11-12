@@ -91,6 +91,7 @@ app.get('/deleteRooms/', function(req, res) {
     var roomID2Del = req.query.roomID2Del; 
     N.API.deleteRoom(roomID2Del, function(result) {
         console.log('Result: ', result);
+        res.send('Result: ' + result);
     }, function (e) {
         console.log('Error: ', e);
     });
