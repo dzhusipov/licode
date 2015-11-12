@@ -44,16 +44,16 @@ var roomName;
 console.log(__dirname);
 
 app.get('/dasm/', function(req, res){
-    roomName = req.params.roomName; 
+    /*roomName = req.params.roomName; 
 
     if (roomName == ""){
         roomName = "testroom";
-    }
+    }*/
     res.sendFile(__dirname + '/server/room.html', {
         isMain: true
     });
 
-  console.log(roomName);
+  console.log(req.params);
 });
 
 app.get('/asdasdasd/:roomName', function(req, res) {
