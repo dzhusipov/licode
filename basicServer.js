@@ -159,7 +159,7 @@ app.post('/createToken/', function(req, res){
             for (var room in rooms) {
                 onsole.log("for to do---------------------------------------------");
                 if (rooms[room].name === roomNameForSearch){
-                        onsole.log("find the room---------------------------------------------");
+                        console.log("find the room---------------------------------------------");
                         roomID4Token =  rooms[room]._id;
                 }
             }
