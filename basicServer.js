@@ -148,14 +148,18 @@ app.post('/createRoom/', function(req, res){
 
 app.post('/createToken/', function(req, res){
     "use strict";
+    console.log("createToken---------------------------------------------");
     var roomNameForSearch = req.body.roomName;
     var roomID4Token;
     /*-----------------------------------------------*/
     N.API.getRooms(function(roomlist) {
+            console.log("getRooms---------------------------------------------");
             var rooms = JSON.parse(roomlist);
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
             for (var room in rooms) {
+                onsole.log("for to do---------------------------------------------");
                 if (rooms[room].name === roomNameForSearch){
+                        onsole.log("find the room---------------------------------------------");
                         roomID4Token =  rooms[room]._id;
                 }
             }
