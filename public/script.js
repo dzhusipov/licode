@@ -1,10 +1,6 @@
 var serverUrl = "/";
 var localStream, room, recording, recordingId, globalToken;
 
-function createUnicRoom(){
-  var roomName = document.getElementById('NewRoomName');
-
-}
 
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -65,13 +61,17 @@ function start_video(){
 
     var req = new XMLHttpRequest();
     var url = serverUrl + 'createToken/';
-    console.log('Room Name is : ' + roomName);
+    
     var params = getSearchParameters();
     roomName = params.roomName;
-    console.log(roomName);
+    
+
     if (roomName == "" || roomName == undefined){
         roomName = "testroom";
     }
+
+    console.log('Room Name is : ' + roomName);
+
     var body = {username: userName, role: role, roomName: roomName};
 
     req.onreadystatechange = function () {
@@ -89,7 +89,7 @@ function start_video(){
     var token = response;
     globalToken = token;
     room = Erizo.Room({token: token});
-    room.name = 'dasm1';
+
     localStream.addEventListener("access-accepted", function () {
       var subscribeToStreams = function (streams) {
         for (var index in streams) {
