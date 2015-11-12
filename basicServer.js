@@ -44,7 +44,11 @@ var roomName;
 console.log(__dirname);
 
 app.get('/dasm/', function(req, res){
+    "use strict";
+    // get room name from params
     roomName = req.query.roomName; 
+
+    //if room name is empty, we change it to default
 
     if (roomName == "" || roomName == undefined){
         roomName = "testroom";
@@ -53,37 +57,30 @@ app.get('/dasm/', function(req, res){
         isMain: true
     });
 
-  console.log(roomName);
-});
+    // we getting rooms and try search room eq. if find? then we attach to it
+    var roomID;
+    N.API.getRooms(function(roomlist) {
+            var rooms = JSON.parse(roomlist);
+            console.log(rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
+            for (var room in rooms) {
+                if (rooms[room].name === roomName){
+                        roomID = rooms[room]._id;
+                }
+            }
+            if (!roomName) {
 
-app.get('/asdasdasd/:roomName', function(req, res) {
-	console.log('dasm1');
-    	"use strict";
-	roomName = req.params.roomName;
-	if (roomName == ""){
-		roomName = "testroom";
-	}
-	N.API.getRooms(function(roomlist) {
-    		var rooms = JSON.parse(roomlist);
-    		console.log(rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
-    		for (var room in rooms) {
-        		if (rooms[room].name === roomName){
-            			roomName = rooms[room]._id;
-        		}
-    		}
-    		if (!roomName) {
+                N.API.createRoom(roomName, function(roomID) {
+                        console.log('Created room with id: ', roomID._id);
+                        console.log('Created room with name: ', roomName);
+                });
 
-        		N.API.createRoom(roomName, function(roomID) {
-            			roomName = roomID._id;
-            			console.log('Created room ', roomName);
-        		});
+            } else {
+                console.log('Using room', roomID);
+                console.log('Room Name', roomName);
+            }
+    });
 
-    		} else {
-        		console.log('Using room', roomName);
-    		}
-	});
-    //res.download(__dirname + '/public/index.html');
-
+    console.log(roomName);
 });
 
 app.get('/getRooms/', function(req, res) {
