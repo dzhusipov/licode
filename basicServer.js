@@ -43,7 +43,7 @@ var myRoom;
 var roomName;
 console.log(__dirname);
 
-app.get('/', function(req, res){
+app.get('/dasm/', function(req, res){
   res.sendfile(__dirname + '/server/room.html');
 });
 
