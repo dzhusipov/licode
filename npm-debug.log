@@ -1,0 +1,130 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'fs' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.37
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'fs', null ]
+6 verbose cache add name=undefined spec="fs" args=["fs",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'fs',
+7 verbose parsed url   path: 'fs',
+7 verbose parsed url   href: 'fs' }
+8 silly lockFile 3f4bb586-fs fs
+9 verbose lock fs /home/andrey/.npm/3f4bb586-fs.lock
+10 silly lockFile 3f4bb586-fs fs
+11 silly lockFile 3f4bb586-fs fs
+12 verbose addNamed [ 'fs', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile a107b96b-fs fs@
+15 verbose lock fs@ /home/andrey/.npm/a107b96b-fs.lock
+16 silly addNameRange { name: 'fs', range: '*', hasData: false }
+17 verbose request where is /fs
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 2213f4984573ed57
+20 verbose url raw /fs
+21 verbose url resolving [ 'https://registry.npmjs.org/', './fs' ]
+22 verbose url resolved https://registry.npmjs.org/fs
+23 verbose request where is https://registry.npmjs.org/fs
+24 info trying registry request attempt 1 at 04:02:16
+25 http GET https://registry.npmjs.org/fs
+26 http 200 https://registry.npmjs.org/fs
+27 silly registry.get cb [ 200,
+27 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     etag: '"61EZFCRGHS23ZM86028I5BXGD"',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=60',
+27 silly registry.get     'content-length': '1643',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     date: 'Tue, 10 Nov 2015 12:02:33 GMT',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '21',
+27 silly registry.get     connection: 'keep-alive',
+27 silly registry.get     'x-served-by': 'cache-fra1220-FRA',
+27 silly registry.get     'x-cache': 'HIT',
+27 silly registry.get     'x-cache-hits': '1',
+27 silly registry.get     'x-timer': 'S1447156953.722475,VS0,VE0',
+27 silly registry.get     vary: 'Accept' } ]
+28 silly addNameRange number 2 { name: 'fs', range: '*', hasData: true }
+29 silly addNameRange versions [ 'fs', [ '0.0.0', '0.0.2' ] ]
+30 verbose addNamed [ 'fs', '0.0.2' ]
+31 verbose addNamed [ '0.0.2', '0.0.2' ]
+32 silly lockFile afea0479-fs-0-0-2 fs@0.0.2
+33 verbose lock fs@0.0.2 /home/andrey/.npm/afea0479-fs-0-0-2.lock
+34 silly lockFile f18d0b15-gistry-npmjs-org-fs-fs-0-0-2-tgz https://registry.npmjs.org/fs/-/fs-0.0.2.tgz
+35 verbose lock https://registry.npmjs.org/fs/-/fs-0.0.2.tgz /home/andrey/.npm/f18d0b15-gistry-npmjs-org-fs-fs-0-0-2-tgz.lock
+36 verbose addRemoteTarball [ 'https://registry.npmjs.org/fs/-/fs-0.0.2.tgz',
+36 verbose addRemoteTarball   'e1f244ef3933c1b2a64bd4799136060d0f5914f8' ]
+37 info retry fetch attempt 1 at 04:02:33
+38 verbose fetch to= /tmp/npm-5973-4HZvbLIq/registry.npmjs.org/fs/-/fs-0.0.2.tgz
+39 http GET https://registry.npmjs.org/fs/-/fs-0.0.2.tgz
+40 http 200 https://registry.npmjs.org/fs/-/fs-0.0.2.tgz
+41 silly lockFile f18d0b15-gistry-npmjs-org-fs-fs-0-0-2-tgz https://registry.npmjs.org/fs/-/fs-0.0.2.tgz
+42 silly lockFile f18d0b15-gistry-npmjs-org-fs-fs-0-0-2-tgz https://registry.npmjs.org/fs/-/fs-0.0.2.tgz
+43 silly lockFile afea0479-fs-0-0-2 fs@0.0.2
+44 silly lockFile afea0479-fs-0-0-2 fs@0.0.2
+45 silly lockFile a107b96b-fs fs@
+46 silly lockFile a107b96b-fs fs@
+47 silly resolved [ { name: 'fs',
+47 silly resolved     version: '0.0.2',
+47 silly resolved     description: '',
+47 silly resolved     main: 'index.js',
+47 silly resolved     scripts: { test: 'echo "Error: no test specified" && exit 1' },
+47 silly resolved     author: '',
+47 silly resolved     license: 'MIT',
+47 silly resolved     _id: 'fs@0.0.2',
+47 silly resolved     _shasum: 'e1f244ef3933c1b2a64bd4799136060d0f5914f8',
+47 silly resolved     _from: 'fs@',
+47 silly resolved     _npmVersion: '1.4.14',
+47 silly resolved     _npmUser: { name: 'alsotang', email: 'alsotang@gmail.com' },
+47 silly resolved     maintainers: [ [Object] ],
+47 silly resolved     dist:
+47 silly resolved      { shasum: 'e1f244ef3933c1b2a64bd4799136060d0f5914f8',
+47 silly resolved        tarball: 'http://registry.npmjs.org/fs/-/fs-0.0.2.tgz' },
+47 silly resolved     directories: {},
+47 silly resolved     _resolved: 'https://registry.npmjs.org/fs/-/fs-0.0.2.tgz' } ]
+48 info install fs@0.0.2 into /usr/lib
+49 info installOne fs@0.0.2
+50 verbose lib/node_modules/fs unbuild
+51 verbose tar unpack /home/andrey/.npm/fs/0.0.2/package.tgz
+52 silly lockFile 9e7a1c49-tar-usr-lib-node-modules-fs tar:///usr/lib/node_modules/fs
+53 verbose lock tar:///usr/lib/node_modules/fs /home/andrey/.npm/9e7a1c49-tar-usr-lib-node-modules-fs.lock
+54 silly lockFile 663034b6--andrey-npm-fs-0-0-2-package-tgz tar:///home/andrey/.npm/fs/0.0.2/package.tgz
+55 verbose lock tar:///home/andrey/.npm/fs/0.0.2/package.tgz /home/andrey/.npm/663034b6--andrey-npm-fs-0-0-2-package-tgz.lock
+56 silly gunzTarPerm modes [ '775', '664' ]
+57 error Error: EACCES, mkdir '/usr/lib/node_modules/fs'
+57 error  { [Error: EACCES, mkdir '/usr/lib/node_modules/fs']
+57 error   errno: 3,
+57 error   code: 'EACCES',
+57 error   path: '/usr/lib/node_modules/fs',
+57 error   fstream_type: 'Directory',
+57 error   fstream_path: '/usr/lib/node_modules/fs',
+57 error   fstream_class: 'DirWriter',
+57 error   fstream_stack:
+57 error    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+57 error      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+57 error      'Object.oncomplete (fs.js:108:15)' ] }
+58 error Please try running this command again as root/Administrator.
+59 error System Linux 3.19.0-25-generic
+60 error command "/usr/bin/node" "/usr/bin/npm" "install" "-g" "fs"
+61 error cwd /home/andrey/git/licode/licode/extras/basic_example
+62 error node -v v0.10.37
+63 error npm -v 1.4.28
+64 error path /usr/lib/node_modules/fs
+65 error fstream_path /usr/lib/node_modules/fs
+66 error fstream_type Directory
+67 error fstream_class DirWriter
+68 error code EACCES
+69 error errno 3
+70 error stack Error: EACCES, mkdir '/usr/lib/node_modules/fs'
+71 error fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+71 error fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+71 error fstream_stack Object.oncomplete (fs.js:108:15)
+72 verbose exit [ 3, true ]
