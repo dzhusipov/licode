@@ -67,6 +67,7 @@ app.get('/dasm/', function(req, res){
             for (var room in rooms) {
                 if (rooms[room].name === roomName){
                         roomID = rooms[room]._id;
+                        console.log("yeeeee we find room " + roomName);
                 }
             }
             if (!roomName) {
