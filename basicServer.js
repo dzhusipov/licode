@@ -86,6 +86,14 @@ app.get('/dasm/', function(req, res){
     console.log(roomName);
 });
 
+app.get('/deleteRooms/', function(req, res) {
+    "use strict";
+    var roomID2Del = req.query.roomID2Del; 
+    N.API.deleteRoom(roomID2Del, function(result) {
+        console.log('Result: ', result);
+    }, errorCallback);
+});
+
 app.get('/getRooms/', function(req, res) {
     "use strict";
     N.API.getRooms(function(rooms) {
