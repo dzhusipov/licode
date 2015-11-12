@@ -151,8 +151,8 @@ app.post('/createToken/', function(req, res){
     console.log("createToken---------------------------------------------");
     var roomNameForSearch = req.body.roomName;
     var roomID4Token;
-    /*-----------------------------------------------*/
-    N.API.getRooms(function(roomlist) {
+    console.log("ya zdesya");
+   /* N.API.getRooms(function(roomlist) {
             console.log("getRooms---------------------------------------------");
             var rooms = JSON.parse(roomlist);
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
@@ -164,7 +164,7 @@ app.post('/createToken/', function(req, res){
                 }
             }
     });
-    /*-----------------------------------------------*/
+
     var room = roomID4Token;
     var username = req.body.username;
     var role = req.body.role;
@@ -173,6 +173,7 @@ app.post('/createToken/', function(req, res){
     }, function (e) {
         console.log('Error: ', e);
     });
+    */
 });
 
 
