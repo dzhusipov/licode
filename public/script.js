@@ -83,8 +83,8 @@ function start_video(){
       req.setRequestHeader('Content-Type', 'application/json');
       req.send(JSON.stringify(body));
     }
-     var roomIdFromName;
-    getRoomIDFromServerRequest("roomName", function (response) {
+    var roomIdFromName;
+    getRoomIDFromServerRequest(roomName, function (response) {
         roomIdFromName = response;
     });
     /*----------------------------------------*/
