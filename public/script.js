@@ -53,7 +53,8 @@ function start_video(){
     config.extensionId = "okeephmleflklcdebijnponpabbmmgeo";
   }
   localStream = Erizo.Stream(config);
-
+  var params = getSearchParameters();
+    roomName = params.roomName;
   /*----------------------------------------*/
     var getRoomIDFromServerRequest = function (roomName, callback){
       var req = new XMLHttpRequest();
@@ -79,8 +80,7 @@ function start_video(){
     var req = new XMLHttpRequest();
     var url = serverUrl + 'createToken/';
     
-    var params = getSearchParameters();
-    roomName = params.roomName;
+    
     
 
     if (roomName == "" || roomName == undefined){
