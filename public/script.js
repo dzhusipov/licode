@@ -37,11 +37,8 @@ window.onbeforeunload = function (evt) {
   return "Если вы закончили, можете закрывать.";
 }
 
-
 window.onload = function () {
     console.log('onload event');
-    roomName = window.location.search.replace("?", "");
-    console.log(roomName);
 };
 
 function start_video(){
@@ -70,7 +67,7 @@ function start_video(){
         roomName = "testroom";
     }
     /*----------------------------------------*/
-    var getRoomIDFromServerRequest = function getRoomIDFromServerRequest(roomName, callback){
+    var getRoomIDFromServerRequest = function (roomName, callback){
       var req = new XMLHttpRequest();
       var url = serverUrl + 'getRoomByName/';
       var body = {roomName: roomName};
