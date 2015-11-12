@@ -43,8 +43,11 @@ var myRoom;
 var roomName;
 console.log(__dirname);
 
+app.get('/', function(req, res){
+  res.send('id: ' + req.query.id);
+});
 
-app.get('/:roomName', function(req, res) {
+app.get('/asdasdasd/:roomName', function(req, res) {
 	console.log('dasm1');
     	"use strict";
 	roomName = req.params.roomName;
