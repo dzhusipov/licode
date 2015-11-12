@@ -41,6 +41,12 @@ N.API.init(config.nuve.superserviceID, config.nuve.superserviceKey, 'http://loca
 var myRoom;
 var roomName;
 console.log('dasm');
+
+app.get('/', function (req, res) {
+  res.send('GET request to the homepage')
+})
+
+
 app.get('/index.html', function(req, res) {
 	console.log('dasm1');
     	"use strict";
