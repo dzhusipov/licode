@@ -66,6 +66,8 @@ function start_video(){
     var req = new XMLHttpRequest();
     var url = serverUrl + 'createToken/';
     console.log('Room Name is : ' + roomName);
+    var params = getSearchParameters();
+    roomName = params.roomName;
     if (roomName == "" || roomName == undefined){
         roomName = "testroom";
     }
@@ -151,8 +153,19 @@ function start_video(){
     });
     localStream.init();
   });
+}
 
+function getSearchParameters() {
+      var prmstr = window.location.search.substr(1);
+      return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+}
 
-  
-
+function transformToAssocArray( prmstr ) {
+    var params = {};
+    var prmarr = prmstr.split("&");
+    for ( var i = 0; i < prmarr.length; i++) {
+        var tmparr = prmarr[i].split("=");
+        params[tmparr[0]] = tmparr[1];
+    }
+    return params;
 }
