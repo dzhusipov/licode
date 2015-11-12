@@ -66,6 +66,7 @@ function start_video(){
     if (roomName == "" || roomName == undefined){
         roomName = "testroom";
     }
+    console.log(roomName);
     /*----------------------------------------*/
     var getRoomIDFromServerRequest = function (roomName, callback){
       var req = new XMLHttpRequest();
