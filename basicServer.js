@@ -43,10 +43,16 @@ var myRoom;
 var roomName;
 console.log(__dirname);
 
-app.get('/dasm/', function(req, res){
-  res.sendFile(__dirname + '/server/room.html', {
+app.get('/dasm/:roomName', function(req, res){
+    roomName = req.params.roomName;
+    if (roomName == ""){
+        roomName = "testroom";
+    }
+    res.sendFile(__dirname + '/server/room.html', {
         isMain: true
     });
+
+  console.log(roomName);
 });
 
 app.get('/asdasdasd/:roomName', function(req, res) {
