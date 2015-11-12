@@ -46,7 +46,7 @@ console.log(__dirname);
 app.get('/dasm/', function(req, res){
     roomName = req.query.roomName; 
 
-    if (roomName == ""){
+    if (roomName == "" || roomName == undefined){
         roomName = "testroom";
     }
     res.sendFile(__dirname + '/server/room.html', {
