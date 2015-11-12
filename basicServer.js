@@ -164,7 +164,7 @@ app.post('/createToken/', function(req, res){
                 }
             }
     });
-    /*
+    
     var room = roomID4Token;
     var username = req.body.username;
     var role = req.body.role;
@@ -173,7 +173,7 @@ app.post('/createToken/', function(req, res){
     }, function (e) {
         console.log('Error: ', e);
     });
-    */
+    
 });
 
 
