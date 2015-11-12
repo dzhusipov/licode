@@ -86,6 +86,28 @@ app.get('/dasm/', function(req, res){
     console.log(roomName);
 });
 
+
+app.get('/deleteAllRooms/', function(req, res) {
+    "use strict";
+    N.API.getRooms(function(roomlist) {
+            var rooms = JSON.parse(roomlist);
+            console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
+            for (var room in rooms) {
+                if (rooms[room].name === roomName){
+                        var roomID2Del =  rooms[room]._id;
+                        N.API.deleteRoom(roomID2Del, function(result) {
+                            console.log('Result: ', result);
+                            res.send('Result: ' + result);
+                        }, function (e) {
+                            console.log('Error: ', e);
+                            res.send('Error: ' + e);
+                        });
+                }
+            }
+    });
+});
+
+
 app.get('/deleteRooms/', function(req, res) {
     "use strict";
     var roomID2Del = req.query.roomID2Del; 
@@ -94,6 +116,7 @@ app.get('/deleteRooms/', function(req, res) {
         res.send('Result: ' + result);
     }, function (e) {
         console.log('Error: ', e);
+        res.send('Error: ' + e);
     });
 });
 
