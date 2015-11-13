@@ -1,5 +1,11 @@
 <html>
   <head>
+    <!-- 
+      With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, Bootstrap is mobile first. Mobile first styles can be found throughout the entire library instead of in separate files.
+
+      To ensure proper rendering and touch zooming, add the viewport meta tag to your
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Licode Basic Example</title>
     <script type="text/javascript" src="/bootstrap/js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="/erizo.js"></script>
@@ -9,11 +15,13 @@
   </head>
  
   <body>
-  	<button id="recordButton" onclick="startRecording()" disabled>Toggle Recording</button>
-    	<div id="myVideo" style="width:320px; height: 240px;">
-        <a href="http://192.168.14.216/rec/" target="_blank">Videos</a>
-      </div>
-    <input id="RoomID" type="hidden" value=""/>
+    <div class="container">
+    	<button style="display:none;" id="recordButton" onclick="startRecording()" disabled>Toggle Recording</button>
+      	<div id="myVideo" style="width:320px; height: 240px;">
+          <a href="http://192.168.14.216/rec/" target="_blank">Videos</a>
+        </div>
+      <input id="RoomID" type="hidden" value=""/>
+    </div>
   </body>
 </html>
 
