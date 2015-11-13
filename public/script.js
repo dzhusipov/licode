@@ -44,7 +44,8 @@ window.onload = function () {
   recording = false;
   var video_constraints = {mandatory: {
        maxFrameRate:30
-      }
+      },
+      optional: [ ]
   };
   var screen = getParameterByName("screen");
   var config = {audio: true, video: video_constraints, data: true, screen: screen, videoSize: [640, 480, 640, 480]};
