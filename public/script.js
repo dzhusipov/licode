@@ -132,8 +132,7 @@ window.onload = function () {
         var div = document.createElement('div');
         div.setAttribute("style", "width: 320px; height: 240px;");
         div.setAttribute("id", "test" + stream.getID());
-
-        document.body.appendChild(div);
+        document.getElementById('secondVideo').appendChild(div);
         stream.show("test" + stream.getID());
 
       });
