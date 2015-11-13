@@ -123,7 +123,7 @@ window.onload = function () {
 
       room.addEventListener("room-connected", function (roomEvent) {
 
-        room.publish(localStream, {maxVideoBW: 30000, minVideoBW:500});
+        room.publish(localStream, {maxVideoBW: 300000, minVideoBW:500});
         subscribeToStreams(roomEvent.streams);
       });
 
