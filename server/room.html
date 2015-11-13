@@ -24,31 +24,27 @@
     <!-- Main site container (content) -->
     <div class="container">
       <div class="col-xs-12 col-md-8"></div>
-      <div class="row">
-        <div class="col-md-2 col-md-offset-5">
-            <div class="col-xs-6 col-md-4">
-              <a class="btn btn-info" href="http://91.241.13.169/rec/" target="_blank">Videos</a>
-            </div>
-            
-            <!-- First video Container left side -->
-            <div class="col-md-4">
-              <button style="display:none;" id="recordButton" onclick="startRecording()" disabled>Toggle Recording</button>
-                <div id="myVideo" style="width:320px; height: 240px;">
-                  
-                </div>
-              <input id="RoomID" type="hidden" value=""/>
-            </div>
-            <!-- Second video Container left side -->
-            <div id="secondVideo" class="col-md-4" style="margin-left: -59px;">
 
-            </div>
-              </div>
-          </div>
+      <div class="col-xs-6 col-md-4">
+        <a class="btn btn-info" href="http://91.241.13.169/rec/" target="_blank">Videos</a>
+      </div>
       
+      <!-- First video Container left side -->
+      <div class="col-md-4">
+      	<button style="display:none;" id="recordButton" onclick="startRecording()" disabled>Toggle Recording</button>
+        	<div id="myVideo" style="width:320px; height: 240px;">
+            
+          </div>
+        <input id="RoomID" type="hidden" value=""/>
+      </div>
+      <!-- Second video Container left side -->
+      <div id="secondVideo" class="col-md-4" style="margin-left: -59px;">
+
+      </div>
       <!--Chat   Container left side -->
-      <!--div class="col-md-4">
+      <div class="col-md-4">
         
-      </div-->
+      </div>
     </div>
   </body>
 </html>
