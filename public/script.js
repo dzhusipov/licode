@@ -148,7 +148,7 @@ window.onload = function () {
         subscribeToStreams(streams);
         document.getElementById("recordButton").disabled = false;
         console.log('try 2 start recording');
-        //startRecording();
+        startRecording();
       });
 
       room.addEventListener("stream-removed", function (streamEvent) {
