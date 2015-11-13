@@ -156,7 +156,7 @@ window.onload = function () {
         var stream = streamEvent.stream;
         if (stream.elementID !== undefined) {
           var element = document.getElementById(stream.elementID);
-          document.body.removeChild(element);
+          document.getElementById('secondVideo').removeChild(element);
         }
       });
       
