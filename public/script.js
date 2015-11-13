@@ -17,17 +17,11 @@ function testConnection () {
 function startRecording () {
   if (room !== undefined){
     if (!recording){
-  recordButton.innerHTML = 'Stop Recording';
       room.startRecording(localStream, function(id) {
         recording = true;
         recordingId = id;
       });
-      
-    } else {
-  recordButton.innerHTML = 'Start Recording';
-      room.stopRecording(recordingId);
-      recording = false;
-    }
+    } 
   }
 }
 
