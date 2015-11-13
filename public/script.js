@@ -135,7 +135,7 @@ window.onload = function () {
       room.addEventListener("stream-subscribed", function(streamEvent) {
         var stream = streamEvent.stream;
         var div = document.createElement('div');
-        div.setAttribute("style", "width: 320px; height: 240px;");
+        div.setAttribute("style", "width: 640px; height: 480px;");
         div.setAttribute("id", "test" + stream.getID());
         document.getElementById('secondVideo').appendChild(div);
         stream.show("test" + stream.getID());
