@@ -96,7 +96,7 @@ app.get('/deleteAllRooms/', function(req, res) {
             for (var room in rooms) {
                 var roomID2Del =  rooms[room]._id;
                 N.API.deleteRoom(roomID2Del, function(result) {
-                    console.log('Result: ', result);
+                    console.log('Room: ' + roomID2Del + 'Result: ' + result);
                 }, function (e) {
                     console.log('Error: ', e);
                 });
@@ -120,18 +120,24 @@ app.get('/deleteRooms/', function(req, res) {
 app.get('/getRooms/', function(req, res) {
     "use strict";
     console.log('getRooms azazaza');
+    var sended = false;
     N.API.getRooms(function(rooms) {
         console.log(' rooms nah');
         if (rooms != ""){
             res.send(rooms);
+            sended = true;
             console.log('azazaza ' + rooms);
         }else{
             res.send('lol');
+            sended = true;
             console.log('lol');
         }
             
     });
-    res.send('lol');
+    if(sended){
+        res.send('lol');
+    }
+    
 });
 
 app.get('/getUsers/:room', function(req, res) {
