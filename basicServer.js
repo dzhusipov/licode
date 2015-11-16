@@ -81,8 +81,8 @@ app.get('/dasm/', function(req, res){
             }
     });
 
-    console.log(roomName);
-    
+    console.log(roomName+" test console");
+
     res.sendFile(__dirname + '/server/room.html', {
         isMain: true
     });
