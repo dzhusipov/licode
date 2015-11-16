@@ -176,7 +176,7 @@ app.post('/getRoomByName/', function(req, res){
             }
     });
     if (!isRomFinded){
-        res.send("none");
+       // res.send("none");
     }
 });
 
