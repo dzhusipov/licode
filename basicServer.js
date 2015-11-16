@@ -54,9 +54,7 @@ app.get('/dasm/', function(req, res){
     if (roomName == "" || roomName == undefined){
         roomName = "testroom";
     }
-    res.sendFile(__dirname + '/server/room.html', {
-        isMain: true
-    });
+    
 
     // we getting rooms and try search room eq. if find? then we attach to it
     
@@ -84,6 +82,10 @@ app.get('/dasm/', function(req, res){
     });
 
     console.log(roomName);
+    
+    res.sendFile(__dirname + '/server/room.html', {
+        isMain: true
+    });
 });
 
 app.get('/deleteAllRooms/', function(req, res) {
