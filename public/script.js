@@ -6,21 +6,21 @@ var roomIdFromName;
  
 
 function setNfoFile(iin,role,videoName){
-  $.get(
-    "/videoInfo",
-    {
-      iin: "1",
-      role: 2,
-      videoName: 3
+  $.ajax({
+    contentType: 'application/json',
+    data: {
+        "command": "on"
     },
-    onAjaxSuccess
-  );
-   
-  function onAjaxSuccess(data)
-  {
-    // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-    alert(data);
-  }
+    dataType: 'json',
+    success: function(data){
+       alert(data);
+    },
+    processData: false,
+    type: 'GET',
+    url: '/videoInfo/',
+    data: JSON.stringify({ iin: iin,  role: 2, videoName: 3}),
+});
+  
 }
 
 function getParameterByName(name) {
