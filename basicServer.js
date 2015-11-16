@@ -172,16 +172,17 @@ app.post('/getRoomByName/', function(req, res){
                         console.log(rooms[room]._id);
                         isRomFinded = true;
                         room2send = rooms[room]._id;
-                        
+                        res.send(rooms[room]._id);
                 }
             }
     });
-
+    /*
     if (room2send != ''){
         res.send(rooms[room]._id);
     }else{
         res.send('none');
     }
+    */
 });
 
 app.post('/createToken/', function(req, res){
