@@ -3,21 +3,25 @@ var localStream, room, recording, recordingId, globalToken;
 var roomName;
 var roomIdFromName;
 
-function createNfoFile(iin,role,videoName){
-  $.get("/videoInfo/",
-    {
-      iin: iin,
-      role: role,
-      videoName: videoName
-    },
-    onAjaxSuccess
-  );
-   
-  function onAjaxSuccess(data)
-  {
-    // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-    alert(data);
-  }
+var createNfoFile = function (iin,role,videoName){
+      var req = new XMLHttpRequest();
+      var url = serverUrl + 'videoInfo/';
+      var body = {iin: iin, role: role, videoName: videoName};
+
+      req.onreadystatechange = function () {
+          if (req.readyState === 4) {
+            callback(req.responseText);
+          }
+      };
+      req.open('POST', url, false);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.send(JSON.stringify(body));
+    }   
+
+function setNfoFile(iin,role,videoName){
+  createNfoFile(roomName, function (response) {
+    alert(response);
+  });
 }
 
 function getParameterByName(name) {
