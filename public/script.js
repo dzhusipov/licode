@@ -19,8 +19,12 @@ function setNfoFile(iin,role,videoName){
       req.setRequestHeader('Content-Type', 'application/json');
       req.send(JSON.stringify(body));
     }   
-
-  createNfoFile(iin,role,videoName, function (response) {
+    
+    var iin2 = iin;
+    var role2 = role;
+    var videoName2 = videoName;
+    
+    createNfoFile(iin2,role2,videoName2, function (response) {
     alert(response);
   });
 }
