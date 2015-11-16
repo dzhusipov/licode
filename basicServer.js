@@ -216,14 +216,17 @@ app.get('/room/:id',function(request,response){
     	});	
 })
 
-app.get('/videoInfo/',function(request,response){
+app.get('/videoInfo/',function(req,res){
     var iin = req.body.iin;
     var videoName = req.body.videoName;
     var role = req.body.role;
     var path = '/var/www/html/rec/';
+    var result;
     fs.appendFile(path + iin + '.nfo', role + videoName, function (err) {
         if (err) throw err;
-        console.log('AppendFile - iin: ' + iin + ' role:' + role);
+        result = 'AppendFile - iin: ' + iin + ' role:' + role;
+        console.log(result);
+        res.send(result);
     });
 
 })
