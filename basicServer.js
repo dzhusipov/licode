@@ -50,8 +50,6 @@ app.get('/dasm/', function(req, res){
     "use strict";
     // get room name from params
     roomName = req.query.roomName;  //UUID
-    role = req.query.role;          //Role
-    iin = req.query.iin;            //IIN
 
     //if room name is empty, we change it to default
 
