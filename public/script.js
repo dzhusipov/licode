@@ -5,16 +5,12 @@ var roomIdFromName;
 
 
 function setNfoFile(iin,role,videoName){
-  var createNfoFile = function (iin,role,videoName,callback){
+
+  var createNfoFile = function (iin,role,videoName){
       var req = new XMLHttpRequest();
       var url = serverUrl + 'videoInfo/';
       var body = {iin: iin, role: role, videoName: videoName};
 
-      req.onreadystatechange = function () {
-          if (req.readyState === 4) {
-            callback(req.responseText);
-          }
-      };
       req.open('GET', url, false);
       req.setRequestHeader('Content-Type', 'application/json');
       req.send(JSON.stringify(body));
