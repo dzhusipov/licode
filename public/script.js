@@ -10,7 +10,7 @@ function setNfoFile(iin,role,videoName){
       var req = new XMLHttpRequest();
       var url = serverUrl + 'videoInfo/';
       var body = {iin: "roomName"};
-      console.log(body);
+      console.log();
       req.onreadystatechange = function () {
           if (req.readyState === 4) {
             callback(req.responseText);
@@ -21,7 +21,7 @@ function setNfoFile(iin,role,videoName){
       req.send(JSON.stringify(body));
     }
     
-    ff(roomName, function (response) {
+    ff("dasm", function (response) {
         alert(response);
     });
   
