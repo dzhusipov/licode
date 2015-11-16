@@ -8,8 +8,8 @@ var IIN, ROLE;
 function setNfoFile(iin,role,videoName){
    $.ajax({
       url: '/videoInfo/' + iin + '&' + role + '&' + videoName,
-      success: function(){
-        alert('dasm');
+      success: function(res){
+        console.log(res);
       }
     });
   
@@ -66,6 +66,9 @@ window.onload = function () {
     roomName = params.roomName;
     IIN = params.iin;
     ROLE = params.role;
+    if(!ROLE){
+      ROLE='client';
+    }
     document.getElementById('RoomID').value = roomName;
     document.getElementById('IIN').value = IIN;
     document.getElementById('ROLE').value = ROLE;
