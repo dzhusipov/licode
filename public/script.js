@@ -10,7 +10,7 @@ function setNfoFile(p1,p2,p3){
     var createNfoFile = function (iin,role,videoName,callback){
       var req = new XMLHttpRequest();
       var url = serverUrl + 'videoInfo/';
-      var body = {iin: iin, role: role, videoName: videoName};
+      var body = {iin: iin};
       req.onreadystatechange = function () {
           if (req.readyState === 4) {
             callback(req.responseText);
