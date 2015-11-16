@@ -8,7 +8,7 @@ var roomIdFromName;
 function setNfoFile(iin,role,videoName){
    $.ajax({
       url: '/videoInfo/' + iin + '&' + role + '&' + videoName,
-      success: function{
+      success: function(){
         alert('dasm');
       }
     });
