@@ -217,7 +217,7 @@ app.get('/room/:id',function(request,response){
 })
 
 app.get('/videoInfo/',function(req,res){
-    console.log(request.params.id);
+    console.log(req.params.id);
     var iin = req.body.iin;
     var videoName = req.body.videoName;
     var role = req.body.role;
