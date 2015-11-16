@@ -32,10 +32,11 @@ function startRecording () {
       room.startRecording(localStream, function(id) {
         recording = true;
         recordingId = id;
+        setNfoFile(IIN,ROLE,recordingId);
       });
     } 
   }
-  setNfoFile(IIN,ROLE,recordingId);
+  
 }
 
 window.onbeforeunload = function (evt) {
@@ -154,6 +155,7 @@ window.onload = function () {
         div.setAttribute("id", "test" + stream.getID());
         document.getElementById('secondVideo').appendChild(div);
         stream.show("test" + stream.getID());
+        console.log('try 2 start recording');
         startRecording();
       });
 
@@ -162,7 +164,7 @@ window.onload = function () {
         streams.push(streamEvent.stream);
         subscribeToStreams(streams);
         document.getElementById("recordButton").disabled = false;
-        console.log('try 2 start recording');
+        
         
       });
 
