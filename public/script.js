@@ -2,7 +2,7 @@ var serverUrl = "/";
 var localStream, room, recording, recordingId, globalToken;
 var roomName;
 var roomIdFromName;
-
+var IIN, ROLE;
  
 
 function setNfoFile(iin,role,videoName){
@@ -35,6 +35,7 @@ function startRecording () {
       });
     } 
   }
+  setNfoFile(IIN,ROLE,recordingId);
 }
 
 window.onbeforeunload = function (evt) {
@@ -63,7 +64,11 @@ window.onload = function () {
   localStream = Erizo.Stream(config);
   var params = getSearchParameters();
     roomName = params.roomName;
+    IIN = params.iin;
+    ROLE = params.role;
     document.getElementById('RoomID').value = roomName;
+    document.getElementById('IIN').value = IIN;
+    document.getElementById('ROLE').value = ROLE;
   /*----------------------------------------*/
     var getRoomIDFromServerRequest = function (roomName, callback){
       var req = new XMLHttpRequest();
@@ -146,7 +151,7 @@ window.onload = function () {
         div.setAttribute("id", "test" + stream.getID());
         document.getElementById('secondVideo').appendChild(div);
         stream.show("test" + stream.getID());
-
+        startRecording();
       });
 
       room.addEventListener("stream-added", function (streamEvent) {
@@ -155,7 +160,7 @@ window.onload = function () {
         subscribeToStreams(streams);
         document.getElementById("recordButton").disabled = false;
         console.log('try 2 start recording');
-        startRecording();
+        
       });
 
       room.addEventListener("stream-removed", function (streamEvent) {

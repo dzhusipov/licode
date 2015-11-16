@@ -49,7 +49,9 @@ console.log(__dirname);
 app.get('/dasm/', function(req, res){
     "use strict";
     // get room name from params
-    roomName = req.query.roomName; 
+    roomName = req.query.roomName;  //UUID
+    role = req.query.role;          //Role
+    iin = req.query.iin;            //IIN
 
     //if room name is empty, we change it to default
 
@@ -220,14 +222,13 @@ app.get('/videoInfo/:params',function(req,res){
     console.log(req.params.params);
     var paramsArr = req.params.params.split('&');
     var iin = paramsArr[0];
-    var videoName = paramsArr[1];
-    var role = paramsArr[2];
+    var videoName = paramsArr[2];
+    var role = paramsArr[3];
     var path = '/var/www/html/rec/';
     var result;
-    console.log('--------------------ROLE---------------' + role);
-    fs.appendFile(path + iin + '.nfo', role + videoName + "\r\n", function (err) {
+    fs.appendFile(path + iin + '.nfo', role + ' video -' + videoName + '.mkv' + "\r\n", function (err) {
         if (err) throw err;
-        result = 'AppendFile - iin: ' + iin + ' role:' + role;
+        result = 'ok';
         console.log(result);
         res.send(result);
     });
