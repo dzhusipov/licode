@@ -225,7 +225,7 @@ app.get('/videoInfo/:params',function(req,res){
     var path = '/var/www/html/rec/';
     var result;
     console.log('--------------------ROLE---------------' + role);
-    fs.appendFile(path + iin + '.nfo', role + videoName, function (err) {
+    fs.appendFile(path + iin + '.nfo', role + videoName + "\r\n", function (err) {
         if (err) throw err;
         result = 'AppendFile - iin: ' + iin + ' role:' + role;
         console.log(result);
