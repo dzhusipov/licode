@@ -120,7 +120,14 @@ app.get('/deleteRooms/', function(req, res) {
 app.get('/getRooms/', function(req, res) {
     "use strict";
     N.API.getRooms(function(rooms) {
-        res.send(rooms);
+        if (rooms != ""){
+            res.send(rooms);
+            console.log('azazaza ' + rooms);
+        }else{
+            res.send('lol');
+            console.log('lol');
+        }
+            
     });
 });
 
