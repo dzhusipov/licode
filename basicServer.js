@@ -144,17 +144,21 @@ app.post('/getRoomByName/', function(req, res){
     "use strict";
     console.log("getRoomByName");
     var roomNameForSearch = req.body.roomName;
-
+    var isRomFinded = false;
     N.API.getRooms(function(roomlist) {
             var rooms = JSON.parse(roomlist);
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
             for (var room in rooms) {
                 if (rooms[room].name === roomNameForSearch){
                         console.log(rooms[room]._id);
+                        isRomFinded = true;
                         res.send(rooms[room]._id);
                 }
             }
     });
+    if (!isRomFinded){
+        res.send("none");
+    }
 });
 
 app.post('/createToken/', function(req, res){
