@@ -43,6 +43,7 @@ var myRoom;
 var roomName;
 var roomIDForMe;
 var isRomFinded = false;
+var room2send = '';
 console.log(__dirname);
 
 app.get('/dasm/', function(req, res){
@@ -163,7 +164,7 @@ app.post('/getRoomByName/', function(req, res){
     "use strict";
     console.log("getRoomByName");
     var roomNameForSearch = req.body.roomName;
-    var room2send = '';
+    
     N.API.getRooms(function(roomlist) {
             var rooms = JSON.parse(roomlist);
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
@@ -172,17 +173,19 @@ app.post('/getRoomByName/', function(req, res){
                         console.log(rooms[room]._id);
                         isRomFinded = true;
                         room2send = rooms[room]._id;
-                        res.send(rooms[room]._id);
+                        //res.send(rooms[room]._id);
                 }
             }
     });
-    /*
+    
     if (room2send != ''){
-        res.send(rooms[room]._id);
+        res.send(room2send);
+
     }else{
         res.send('none');
     }
-    */
+    room2send = '';
+    
 });
 
 app.post('/createToken/', function(req, res){
