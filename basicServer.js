@@ -97,8 +97,9 @@ app.get('/deleteAllRooms/', function(req, res) {
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
             for (var room in rooms) {
                 var roomID2Del =  rooms[room]._id;
+                console.log ('2del: ' + rooms[room]._id);
                 N.API.deleteRoom(roomID2Del, function(result) {
-                    console.log('Room: ' + roomID2Del + 'Result: ' + result);
+                    console.log('Room: ' + roomID2Del + ' | Result: ' + result);
                 }, function (e) {
                     console.log('Error: ', e);
                 });
