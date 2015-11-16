@@ -10,6 +10,7 @@ function setNfoFile(iin,role,videoName){
       var req = new XMLHttpRequest();
       var url = serverUrl + 'videoInfo/';
       var body = {iin: "roomName"};
+      console.log(body);
       req.onreadystatechange = function () {
           if (req.readyState === 4) {
             callback(req.responseText);
