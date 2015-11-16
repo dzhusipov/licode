@@ -217,9 +217,9 @@ app.get('/room/:id',function(request,response){
 })
 
 app.get('/videoInfo/',function(req,res){
-    var iin = req.body.iin;
-    var videoName = req.body.videoName;
-    var role = req.body.role;
+    var iin = req.iin;
+    var videoName = req.videoName;
+    var role = req.role;
     var path = '/var/www/html/rec/';
     var result;
     fs.appendFile(path + iin + '.nfo', role + videoName, function (err) {
