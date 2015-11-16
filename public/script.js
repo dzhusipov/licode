@@ -86,7 +86,7 @@ window.onload = function () {
     }
     console.log(roomName);
     roomIdFromName = document.getElementById('RoomID').value;
-    console.log('Room Name is : ' + roomIdFromName);
+    console.log('Room id is : ' + roomIdFromName);
 
     var body = {username: userName, role: role, roomName: roomIdFromName};
 
