@@ -6,20 +6,23 @@ var roomIdFromName;
  
 
 function setNfoFile(iin,role,videoName){
-  $.ajax({
-    contentType: 'application/json',
-    data: {
-        "command": "on"
-    },
-    dataType: 'json',
-    success: function(data){
-       alert(data);
-    },
-    processData: false,
-    type: 'GET',
-    url: '/videoInfo/',
-    body: JSON.stringify({ iin: iin,  role: 2, videoName: 3}),
-});
+    var ff = function (roomName, callback){
+      var req = new XMLHttpRequest();
+      var url = serverUrl + 'videoInfo/';
+      var body = {iin: "roomName"};
+      req.onreadystatechange = function () {
+          if (req.readyState === 4) {
+            callback(req.responseText);
+          }
+      };
+      req.open('GET', url, false);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.send(JSON.stringify(body));
+    }
+    
+    ff(roomName, function (response) {
+        alert(response);
+    });
   
 }
 
