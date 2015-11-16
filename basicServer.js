@@ -131,6 +131,7 @@ app.get('/getRooms/', function(req, res) {
         }
             
     });
+    res.send('lol');
 });
 
 app.get('/getUsers/:room', function(req, res) {
