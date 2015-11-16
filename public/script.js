@@ -13,7 +13,7 @@ var createNfoFile = function (iin,role,videoName){
             callback(req.responseText);
           }
       };
-      req.open('POST', url, false);
+      req.open('GET', url, false);
       req.setRequestHeader('Content-Type', 'application/json');
       req.send(JSON.stringify(body));
     }   
