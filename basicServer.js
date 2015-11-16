@@ -177,7 +177,7 @@ app.post('/getRoomByName/', function(req, res){
                 }
             }
     });
-    
+    sleep(1);
     if (room2send != ''){
         res.send(room2send);
         console.log('sending :' + room2send);
