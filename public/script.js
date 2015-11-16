@@ -18,7 +18,7 @@ function setNfoFile(iin,role,videoName){
     processData: false,
     type: 'GET',
     url: '/videoInfo/',
-    data: JSON.stringify({ iin: iin,  role: 2, videoName: 3}),
+    body: JSON.stringify({ iin: iin,  role: 2, videoName: 3}),
 });
   
 }
