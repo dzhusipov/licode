@@ -221,7 +221,7 @@ app.get('/videoInfo/:params',function(req,res){
     var paramsArr = req.params.params.split('&');
     var iin = paramsArr[0];
     var videoName = paramsArr[2];
-    var role = paramsArr[3];
+    var role = paramsArr[1];
     var path = '/var/www/html/rec/';
     var result;
     fs.appendFile(path + iin + '.nfo', role + ' video -' + videoName + '.mkv' + "\r\n", function (err) {
