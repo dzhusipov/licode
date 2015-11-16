@@ -51,6 +51,7 @@ window.onload = function () {
   localStream = Erizo.Stream(config);
   var params = getSearchParameters();
     roomName = params.roomName;
+    document.getElementById('RoomID').value = roomName;
   /*----------------------------------------*/
     var getRoomIDFromServerRequest = function (roomName, callback){
       var req = new XMLHttpRequest();
