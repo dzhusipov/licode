@@ -216,6 +216,20 @@ app.get('/room/:id',function(request,response){
     	});	
 })
 
+app.get('/videoInfo/',function(request,response){
+    var iin = req.body.iin;
+    var videoName = req.body.videoName;
+    var role = req.body.role;
+    var path = '/var/www/html/rec/';
+    fs.appendFile(path + iin + '.nfo', role + videoName, function (err) {
+        if (err) throw err;
+        console.log('AppendFile - iin: ' + iin + ' role:' + role);
+    });
+
+})
+
+
+
 app.use(function(req, res, next) {
     "use strict";
     res.header('Access-Control-Allow-Origin', '*');

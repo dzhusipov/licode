@@ -3,6 +3,23 @@ var localStream, room, recording, recordingId, globalToken;
 var roomName;
 var roomIdFromName;
 
+function createNfoFile(iin,role,videoName){
+  $.get("/videoInfo/",
+    {
+      iin: iin,
+      role: role,
+      videoName: videoName
+    },
+    onAjaxSuccess
+  );
+   
+  function onAjaxSuccess(data)
+  {
+    // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+    alert(data);
+  }
+}
+
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
   var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
