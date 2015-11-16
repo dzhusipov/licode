@@ -5,25 +5,22 @@ var roomIdFromName;
 
  
 
-function setNfoFile(p1,p2,p3){
-
-    var createNfoFile = function (iin,role,videoName,callback){
-      var req = new XMLHttpRequest();
-      var url = serverUrl + 'videoInfo/';
-      var body = {iin: iin};
-      req.onreadystatechange = function () {
-          if (req.readyState === 4) {
-            callback(req.responseText);
-          }
-      };
-      req.open('GET', url, false);
-      req.setRequestHeader('Content-Type', 'application/json');
-      req.send(JSON.stringify(body));
-    }  
-
-    createNfoFile(p1,p2,p3, function (response) {
-    alert(response);
-  });
+function setNfoFile(iin,role,videoName){
+  $.get(
+    "/videoInfo",
+    {
+      iin: "1",
+      role: 2,
+      videoName: 3
+    },
+    onAjaxSuccess
+  );
+   
+  function onAjaxSuccess(data)
+  {
+    // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+    alert(data);
+  }
 }
 
 function getParameterByName(name) {
