@@ -121,7 +121,7 @@ app.get('/getRooms/', function(req, res) {
     "use strict";
     console.log('getRooms azazaza');
     N.API.getRooms(function(rooms) {
-        console.log(rooms);
+        console.log(rooms + ' rooms nah');
         if (rooms != ""){
             res.send(rooms);
             console.log('azazaza ' + rooms);
