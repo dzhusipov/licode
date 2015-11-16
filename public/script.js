@@ -3,10 +3,7 @@ var localStream, room, recording, recordingId, globalToken;
 var roomName;
 var roomIdFromName;
 
-
-function setNfoFile(iin,role,videoName){
-
-  var createNfoFile = function (iin,role,videoName,callback){
+ var createNfoFile = function (iin,role,videoName,callback){
       var req = new XMLHttpRequest();
       var url = serverUrl + 'videoInfo/';
       var body = {iin: iin, role: role, videoName: videoName};
@@ -18,13 +15,13 @@ function setNfoFile(iin,role,videoName){
       req.open('GET', url, false);
       req.setRequestHeader('Content-Type', 'application/json');
       req.send(JSON.stringify(body));
-    }   
-    
-    var iin2 = iin;
-    var role2 = role;
-    var videoName2 = videoName;
-    
-    createNfoFile(iin2,role2,videoName2, function (response) {
+  }  
+
+function setNfoFile(iin,role,videoName){
+
+
+
+    createNfoFile(iin,role,videoName, function (response) {
     alert(response);
   });
 }
