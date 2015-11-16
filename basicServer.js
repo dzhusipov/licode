@@ -223,6 +223,7 @@ app.get('/videoInfo/',function(req,res){
     var role = req.body.role;
     var path = '/var/www/html/rec/';
     var result;
+    onsole.log('--------------------ROLE---------------' + role);
     fs.appendFile(path + iin + '.nfo', role + videoName, function (err) {
         if (err) throw err;
         result = 'AppendFile - iin: ' + iin + ' role:' + role;
