@@ -175,6 +175,7 @@ app.post('/getRoomByName/', function(req, res){
                 }
             }
     });
+    console.log(isRomFinded + '  dasm');
     if (!isRomFinded){
        // res.send("none");
     }
