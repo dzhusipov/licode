@@ -161,7 +161,7 @@ app.get('/getRooms/', function(req, res) {
         }
             
     });
-    if(sended){
+    if(!sended){
         res.send('lol');
     }
     
@@ -209,7 +209,7 @@ app.post('/getRoomByName/', function(req, res){
             }
             room2send = '';
     });
-    res.send('none');
+
 });
 
 app.post('/createToken/', function(req, res){
