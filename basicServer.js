@@ -46,9 +46,9 @@ var isRomFinded = false;
 var room2send = '';
 console.log(__dirname);
 
-try {
+/*try {
     console.log('inside try');
-  N.API.getRooms(function(rooms) {
+    N.API.getRooms(function(rooms) {
         console.log(' rooms nah');
         if (rooms != ""){
             res.send(rooms);
@@ -68,7 +68,7 @@ try {
   console.log(err);
 
 }
-
+*/
 
 app.get('/dasm/', function(req, res){
     "use strict";
