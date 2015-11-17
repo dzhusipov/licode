@@ -185,22 +185,26 @@ app.post('/getRoomByName/', function(req, res){
     "use strict";
     console.log("getRoomByName");
     roomNameForSearch = req.body.roomName;
-    
+    console.log('get param: ' + roomNameForSearch);
     N.API.getRooms(function(roomlist) {
             var rooms = JSON.parse(roomlist);
             isRomFinded = false;
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
             for (var room in rooms) {
+                console.log('for in ----------');
                 if (rooms[room].name === roomNameForSearch){
                         console.log(rooms[room]._id);
                         console.log('Room is finded in getRoomByName');
                         isRomFinded = true;
                         room2send = rooms[room]._id;
                         res.send(rooms[room]._id);
+                }else{
+                    console.log('not finded');
                 }
             }
 
             if (!isRomFinded){
+                console.log('isRomFinded: ' + isRomFinded);
                 res.send('none');
                 console.log('sending : none');
                 isRomFinded = false;
