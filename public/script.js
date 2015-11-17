@@ -160,7 +160,7 @@ window.onload = function () {
       room.addEventListener("stream-subscribed", function(streamEvent) {
         var stream = streamEvent.stream;
         var div = document.createElement('div');
-        div.setAttribute("style", "width: 550px; height: 413px;");
+        div.setAttribute("style", "width: 450px; height: 338px;");
         div.setAttribute("id", "test" + stream.getID());
         document.getElementById('secondVideo').appendChild(div);
         stream.show("test" + stream.getID());
