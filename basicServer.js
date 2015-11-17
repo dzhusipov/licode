@@ -105,13 +105,14 @@ app.get('/dasm/', function(req, res){
                 console.log('Using room', roomIDForMe);
                 console.log('Room Name', roomName);
             }
+            res.sendFile(__dirname + '/server/room.html', {
+                isMain: true
+            });
+
     });
 
-    console.log(roomName+" test console");
+    //console.log(" test console");
 
-    res.sendFile(__dirname + '/server/room.html', {
-        isMain: true
-    });
 });
 
 app.get('/deleteAllRooms/', function(req, res) {
