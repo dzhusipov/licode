@@ -146,23 +146,23 @@ app.get('/deleteRooms/', function(req, res) {
 
 app.get('/getRooms/', function(req, res) {
     "use strict";
-    console.log('getRooms azazaza');
+    console.log('getRooms started');
     var sended = false;
     N.API.getRooms(function(rooms) {
-        console.log(' rooms nah');
+        console.log(' get rooms NAPI');
         if (rooms != ""){
             res.send(rooms);
             sended = true;
-            console.log('azazaza ' + rooms);
+            console.log('Rooms finded ' + rooms);
         }else{
-            res.send('lol');
+            res.send('Rooms not find');
             sended = true;
-            console.log('lol');
+            console.log('Rooms not find');
         }
             
     });
     if(!sended){
-        res.send('lol');
+        res.send('empty NAPI');
     }
     
 });
