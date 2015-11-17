@@ -89,6 +89,7 @@ app.get('/dasm/', function(req, res){
             console.log("Default Room Name is " + roomName);
             for (var room in rooms) {
                 if (rooms[room].name === roomName){
+                        console.log('rooms[room].name : ' + rooms[room].name + '  roomName: ' + roomName);
                         roomIDForMe = rooms[room]._id;
                         console.log("yeeeee we find room " + roomName);
                 }
