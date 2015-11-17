@@ -41,6 +41,15 @@ function startRecording () {
 
 window.onbeforeunload = function (evt) {
   console.log('stopping video recording');
+  var iin = document.getElementById('IIN').value;
+
+  $.ajax({
+      url: '/videoEnd/' + iin,
+      success: function(res){
+        console.log(res);
+      }
+    });
+
   room.stopRecording(recordingId);
   return "Если вы закончили, можете закрывать.";
 }

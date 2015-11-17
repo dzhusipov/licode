@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -F "File=@$1" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$2" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF
