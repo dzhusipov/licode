@@ -150,6 +150,8 @@ app.get('/getRooms/', function(req, res) {
     var sended = false;
     N.API.getRooms(function(rooms) {
         console.log(' get rooms NAPI');
+         res.send(rooms);
+         /*
         if (rooms != ""){
             res.send(rooms);
             sended = true;
@@ -159,7 +161,7 @@ app.get('/getRooms/', function(req, res) {
             sended = true;
             console.log('Rooms not find');
         }
-            
+            */
     });
     if(!sended){
         res.send('empty NAPI');
