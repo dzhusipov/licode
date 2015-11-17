@@ -46,6 +46,30 @@ var isRomFinded = false;
 var room2send = '';
 console.log(__dirname);
 
+try {
+    console.log('inside try');
+  N.API.getRooms(function(rooms) {
+        console.log(' rooms nah');
+        if (rooms != ""){
+            res.send(rooms);
+            sended = true;
+            console.log('azazaza ' + rooms);
+        }else{
+            res.send('lol');
+            sended = true;
+            console.log('lol');
+        }
+            
+    });
+
+
+} catch (err) {
+
+  console.log(err);
+
+}
+
+
 app.get('/dasm/', function(req, res){
     "use strict";
     // get room name from params
