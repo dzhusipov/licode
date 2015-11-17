@@ -266,7 +266,7 @@ app.get('/videoInfo/:params',function(req,res){
 
 app.get('/videoEnd/:iin',function(req,res){
     console.log('vidoe finished');
-    var iin = request.params.iin;
+    var iin = req.params.iin;
     var path = '/var/www/html/rec/';
     var result;
     fs.appendFile(path + iin + '.nfo','finished' + "\r\n", function (err) {
