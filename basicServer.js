@@ -185,7 +185,7 @@ app.post('/getRoomByName/', function(req, res){
             }
             room2send = '';
     });
-    
+    res.send('none');
 });
 
 app.post('/createToken/', function(req, res){
