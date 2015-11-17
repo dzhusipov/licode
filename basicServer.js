@@ -44,7 +44,7 @@ var roomName;
 var roomIDForMe;
 var isRomFinded = false;
 var room2send = '';
-console.log(__dirname);
+var roomNameForSearch
 
 /*try {
     console.log('inside try');
@@ -80,7 +80,6 @@ app.get('/dasm/', function(req, res){
     if (roomName == "" || roomName == undefined){
         roomName = "testroom";
     }
-    
 
     // we getting rooms and try search room eq. if find? then we attach to it
     console.log('try 2 getRooms');
@@ -185,14 +184,16 @@ app.post('/createRoom/', function(req, res){
 app.post('/getRoomByName/', function(req, res){
     "use strict";
     console.log("getRoomByName");
-    var roomNameForSearch = req.body.roomName;
-    isRomFinded = false;
+    roomNameForSearch = req.body.roomName;
+    
     N.API.getRooms(function(roomlist) {
             var rooms = JSON.parse(roomlist);
+            isRomFinded = false;
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
             for (var room in rooms) {
                 if (rooms[room].name === roomNameForSearch){
                         console.log(rooms[room]._id);
+                        console.log('Room is finded in getRoomByName');
                         isRomFinded = true;
                         room2send = rooms[room]._id;
                         res.send(rooms[room]._id);
