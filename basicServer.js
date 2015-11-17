@@ -266,7 +266,6 @@ app.get('/videoInfo/:params',function(req,res){
 
 app.get('/videoEnd/:iin',function(req,res){
     console.log('vidoe finished');
-    var paramsArr = req.params.params.split('&');
     var iin = request.params.iin;
     var path = '/var/www/html/rec/';
     var result;
