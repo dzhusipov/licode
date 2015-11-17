@@ -87,7 +87,10 @@ app.get('/dasm/', function(req, res){
             var rooms = JSON.parse(roomlist);
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
             console.log("Default Room Name is " + roomName);
+            var incerentFor = 0;
             for (var room in rooms) {
+                incerentFor++;
+                console.log(incerentFor);
                 if (rooms[room].name === roomName){
                         console.log('rooms[room].name : ' + rooms[room].name + '  roomName: ' + roomName);
                         roomIDForMe = rooms[room]._id;
