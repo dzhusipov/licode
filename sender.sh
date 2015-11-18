@@ -4,6 +4,7 @@
 cd /var/www/html/rec
 
 #creating log
+LOGFILEPATH=''
 LOFGILE='sender.log'
 
 echo ' ------------------------ Process started ------------------------ ' >> $LOFGILE 
@@ -45,24 +46,16 @@ do
 				RESULTOFREST=$(curl -F "File=@$file2" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF)
 				echo "	Send result of second file: $RESULTOFREST" >> $LOFGILE
 			fi
-			if [[ $increment = "3" ]]
-			then 
-				echo "none------------"
-			fi
-			if [[ $increment = "4" ]]
-			then 
-				echo "none------------"
-			fi
 		 	#echo $increment
 		 	#echo $line
 		done
 		#delete files
-		echo "removing files $file1 $file2 $file"
-		rm $file1
-		rm $file2
-		rm $file
+		echo "	Remooving files $file1 $file2 $file" >> $LOFGILE
+		#rm $file1
+		#rm $file2
+		#rm $file
+		echo "finished" >> $file
 	fi
 	
 done
-echo "done ................. "
 echo ' ------------------------ Process ended ------------------------ ' >> $LOFGILE
