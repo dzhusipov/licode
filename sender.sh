@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 #enter in to path
 cd /var/www/html/rec
 
@@ -64,3 +64,4 @@ do
 	echo "	---------- $file not finished" >> $LOFGILE	
 done
 echo ' ------------------------ Process ended -------------------------- ' >> $LOFGILE
+set +x	
