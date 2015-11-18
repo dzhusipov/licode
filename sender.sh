@@ -53,7 +53,7 @@ do
 		#rm $file1
 		#rm $file2
 		#rm $file
-		
+		echo "finished" >> $file
 		echo "$NOW *" >> $LOFGILE
 	fi
 done
