@@ -49,7 +49,7 @@ do
 		done
 		#delete files
 		NOW=$(date +"%m-%d-%Y %T")
-		echo "$NOW Remooving files $file1 $file2 $file" >> $LOFGILE
+		echo "$NOW Removing files $file1 $file2 $file" >> $LOFGILE
 		#rm $file1
 		#rm $file2
 		#rm $file
