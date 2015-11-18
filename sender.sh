@@ -54,7 +54,7 @@ do
 		#rm $file2
 		#rm $file
 		
-		
+		echo "$NOW *" >> $LOFGILE
 	fi
 done
 NOW=$(date +"%m-%d-%Y %T")
