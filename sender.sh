@@ -57,5 +57,3 @@ do
 		echo "$NOW *" >> $LOFGILE
 	fi
 done
-NOW=$(date +"%m-%d-%Y %T")
-echo "$NOW ------------------------ Process ended -------------------------- " >> $LOFGILE
