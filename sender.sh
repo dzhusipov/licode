@@ -58,7 +58,6 @@ do
 		#rm $file2
 		#rm $file
 		#echo "finished" >> $file
-	else
 		
 	fi
 	echo "	---------- $file not finished" >> $LOFGILE	
