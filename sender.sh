@@ -34,7 +34,7 @@ do
 			echo "	finded iin is: $iin" >> $LOFGILE	
 			if [[ $increment = "1" ]]
 			then 
-				file1=$(echo $line | awk {'print $4'} | tr -d '\n')
+				file1=$(echo $line | awk {'print $4'} | tr '\n' ' ')
 				echo "	sending first file : $file1" >> $LOFGILE	
 
 				echo "curl -F 'File=@$file1' -F 'DocumentType=VEREF' -H 'Role:Client' -H 'IIN:$iin' -H 'Content-Type:multipart/form-data' --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF"  >> $LOFGILE
@@ -43,7 +43,7 @@ do
 			fi
 			if [[ $increment = "2" ]]
 			then 
-				file2=$(echo $line | awk {'print $4'} | tr -d '\n')
+				file2=$(echo $line | awk {'print $4'} | tr '\n' ' ')
 				echo "	sending second one : $file2" >> $LOFGILE
 				echo "curl -F 'File=@$file2' -F 'DocumentType=VEREF' -H 'Role:Client' -H 'IIN:$iin' -H 'Content-Type:multipart/form-data' --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF"  >> $LOFGILE
 				RESULTOFREST=`curl -F "File=@$file2" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
@@ -57,9 +57,9 @@ do
 		#rm $file1
 		#rm $file2
 		#rm $file
-		
-	else
 		echo "finished" >> $file
+	else
+		
 	fi
 	echo "	---------- $file not finished" >> $LOFGILE	
 done
