@@ -36,15 +36,15 @@ do
 			then 
 				file1=$(echo $line | awk {'print $4'})
 				echo "	sending first file : $file1" >> $LOFGILE	
-				echo "  Send result of first file: " & curl -F "File=@$file1" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF  >> $LOFGILE
-				#echo "	Send result of first file: $RESULTOFREST" >> $LOFGILE
+				RESULTOFREST=`curl -F "File=@$file1" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
+				echo "	Send result of first file: $RESULTOFREST" >> $LOFGILE
 			fi
 			if [[ $increment = "2" ]]
 			then 
 				file2=$(echo $line | awk {'print $4'})
 				echo "	sending second one : $file2" >> $LOFGILE
-				echo "  Send result of second file: " & curl -F "File=@$file2" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF >> $LOFGILE
-				#echo "	Send result of second file: $RESULTOFREST" >> $LOFGILE
+				RESULTOFREST=`curl -F "File=@$file2" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
+				echo "	Send result of second file: $RESULTOFREST" >> $LOFGILE
 			fi
 		 	#echo $increment
 		 	#echo $line
@@ -56,6 +56,6 @@ do
 		#rm $file
 		echo "finished" >> $file
 	fi
-	
+	echo "	---------- $file not finished" >> $LOFGILE	
 done
 echo ' ------------------------ Process ended -------------------------- ' >> $LOFGILE
