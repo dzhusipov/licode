@@ -54,7 +54,7 @@ do
 		#rm $file1
 		#rm $file2
 		#rm $file
-		#echo "finished" >> $file
+		echo "finished" >> $file
 		
 	fi
 	echo "	---------- $file not finished" >> $LOFGILE	
