@@ -56,7 +56,6 @@ do
 		echo "finished" >> $file
 		
 	fi
-	echo "	---------- $file not finished" >> $LOFGILE	
+	
 done
 echo ' ------------------------ Process ended -------------------------- ' >> $LOFGILE
-set +x	
