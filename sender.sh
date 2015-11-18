@@ -39,6 +39,7 @@ do
 			fi
 			if [[ $increment = "2" ]]
 			then 
+				file2=$(echo $line | tr -d '\r'| awk {'printf $4'})
 				RESULTOFREST=`curl -F "File=@$file2" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
 				NOW=$(date +"%m-%d-%Y %T")
 				echo "$NOW file : $file2	Send result: $RESULTOFREST" >> $LOFGILE
