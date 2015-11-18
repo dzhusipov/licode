@@ -57,7 +57,7 @@ do
 		#rm $file1
 		#rm $file2
 		#rm $file
-		echo "finished" >> $file
+		#echo "finished" >> $file
 	else
 		
 	fi
