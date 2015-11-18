@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 #enter in to path
 cd /var/www/html/rec
 
