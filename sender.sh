@@ -6,9 +6,9 @@ cd /var/www/html/rec
 #creating log
 LOGFILEPATH=''
 LOFGILE='sender.log'
-
+STARTDATE=$(date)
 echo ' ------------------------ Process started ------------------------ ' >> $LOFGILE 
-echo date >> $LOFGILE
+echo "$STARTDATE" >> $LOFGILE
 
 #get file names
 files=$(ls | grep nfo)
