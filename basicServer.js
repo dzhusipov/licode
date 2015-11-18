@@ -255,7 +255,7 @@ app.get('/videoInfo/:params',function(req,res){
     var role = paramsArr[1];
     var path = '/var/www/html/rec/';
     var result;
-    fs.appendFile(path + iin + '.nfo', role + ' video -' + videoName + '.mkv' + "\r\n", function (err) {
+    fs.appendFile(path + iin + '.nfo', role + ' video - ' + videoName + '.mkv' + "\r\n", function (err) {
         if (err) throw err;
         result = 'ok';
         console.log(result);
