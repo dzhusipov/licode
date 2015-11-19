@@ -5,7 +5,8 @@ cd /var/www/html/rec
 
 #creating log
 LOGFILEPATH=''
-LOFGILE='sender.log'
+DATENOW=$(date +"%m-%d-%Y")
+LOFGILE="$DATENOW_sender.log"
 FFMPEGLOFGILE='ffmpeg.log'
 NOW=$(date +"%m-%d-%Y %T") 
 echo "$NOW ------------------------ Process started ------------------------ " >> $LOFGILE
