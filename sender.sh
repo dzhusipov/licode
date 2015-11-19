@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 #enter in to path
 cd /var/www/html/rec
 
@@ -31,7 +32,7 @@ do
 			((increment++))
 			iin=${file:0:${#file} - 4}
 			FINALFILE="$iin.mkv"
-			#echo "	finded iin is: $iin" >> $LOFGILE	
+			echo "	FINALFILE=$FINALFILE" >> $LOFGILE	
 			if [[ $increment = "1" ]]
 			then 
 				#get role of video
@@ -53,11 +54,11 @@ do
 
 				if [[ $role = "client" ]]
 				then
-					ffmpeg -i agent_sound.mp3 -i $file2 "$FINALFILE"
 					CLIENTFILE=$file2
+					ffmpeg -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"
 				else
 					ffmpeg -i $file2 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3
-					ffmpeg -i agent_sound.mp3 -i $CLIENTFILE "$FINALFILE"
+					ffmpeg -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"
 					AGENTFILE=$file2
 				fi
 
