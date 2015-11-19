@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 #enter in to path
 cd /var/www/html/rec
 
@@ -55,6 +55,7 @@ do
 				if [[ $role = "client" ]]
 				then
 					CLIENTFILE=$file2
+					echo 'ffmpeg -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"'
 					ffmpeg -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"
 				else
 					ffmpeg -y -i $file2 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3
