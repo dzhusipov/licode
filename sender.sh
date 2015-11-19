@@ -42,7 +42,7 @@ do
 
 				if [[ $role = "agent" ]]
 				then
-					ffmpeg -y -i $file1 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 >> $FFMPEGLOFGILE
+					ffmpeg -y -i $file1 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 -loglevel quiet
 					AGENTFILE=$file1
 				else
 					CLIENTFILE=$file1
@@ -57,10 +57,10 @@ do
 				then
 					CLIENTFILE=$file2
 					echo 'ffmpeg -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"'
-					ffmpeg -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE" >> $FFMPEGLOFGILE
+					ffmpeg -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE" -loglevel quiet
 				else
-					ffmpeg -y -i $file2 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 >> $FFMPEGLOFGILE
-					ffmpeg -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE" >> $FFMPEGLOFGILE
+					ffmpeg -y -i $file2 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 -loglevel quiet
+					ffmpeg -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE" -loglevel quiet
 					AGENTFILE=$file2
 				fi
 
