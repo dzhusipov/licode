@@ -45,7 +45,7 @@ do
 				if [[ $role = "agent" ]]
 				then
 					#echo "ffmpeg -v quiet -y -i $file1 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3"
-					ffmpeg -v quiet -y -i "$file1" -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 
+					ffmpeg -v quiet -y -i "$file1" -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 </dev/null
 					AGENTFILE=$file1
 				else
 					CLIENTFILE=$file1
@@ -60,13 +60,13 @@ do
 				then
 					CLIENTFILE=$file2
 					#echo "ffmpeg -v quiet -i agent_sound.mp3 -i $CLIENTFILE $FINALFILE"
-					ffmpeg -i "$CLIENTFILE" -i agent_sound.mp3 -c copy -map 0:0 -map 1:0 "$FINALFILE"
+					ffmpeg -i "$CLIENTFILE" -i agent_sound.mp3 -c copy -map 0:0 -map 1:0 "$FINALFILE" </dev/null
 					#ffmpeg -v quiet -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"
 				else
 					#echo "ffmpeg -v quiet -y -i $file2 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3"
-					ffmpeg -v quiet -y -i "$file2" -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3
+					ffmpeg -v quiet -y -i "$file2" -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 </dev/null
 					#echo "ffmpeg -v quiet -i agent_sound.mp3 -i $CLIENTFILE $FINALFILE"
-					ffmpeg -i "$CLIENTFILE" -i agent_sound.mp3 -c copy -map 0:0 -map 1:0 "$FINALFILE"
+					ffmpeg -i "$CLIENTFILE" -i agent_sound.mp3 -c copy -map 0:0 -map 1:0 "$FINALFILE" </dev/null
 					AGENTFILE=$file2
 				fi
 
