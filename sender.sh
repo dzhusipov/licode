@@ -6,7 +6,7 @@ cd /var/www/html/rec
 #creating log
 
 DATENOWIS=$(date +"%m-%d-%Y")
-LOGNAME="_sender.log"
+LOGNAME="-sender.log"
 LOGFILE=$DATENOWIS$LOGNAME
 FFMPEGLOGFILE='ffmpeg.log'
 NOW=$(date +"%Y-%m-%d %T") 
