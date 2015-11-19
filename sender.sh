@@ -60,7 +60,7 @@ do
 				then
 					CLIENTFILE=$file2
 					#echo "ffmpeg -v quiet -i agent_sound.mp3 -i $CLIENTFILE $FINALFILE"
-					ffmpeg -i "$CLIENTFILE" -i agent_sound.mp3 -filter_complex "[0:a][1:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a libvorbis -ac 2 -shortest "$FINALFILE" </dev/null
+					ffmpeg -v quiet -i "$CLIENTFILE" -i agent_sound.mp3 -filter_complex "[0:a][1:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a libvorbis -ac 2 -shortest "$FINALFILE" </dev/null
 					#ffmpeg -v quiet -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"
 				else
 					#echo "ffmpeg -v quiet -y -i $file2 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3"
