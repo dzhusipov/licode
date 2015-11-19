@@ -9,7 +9,7 @@ DATENOWIS=$(date +"%m-%d-%Y")
 LOGNAME="_sender.log"
 LOGFILE=$DATENOWIS$LOGNAME
 FFMPEGLOGFILE='ffmpeg.log'
-NOW=$(date +"%m-%d-%Y %T") 
+NOW=$(date +"%Y-%m-%d %T") 
 echo "$NOW ------------------------ Process started ------------------------ " >> $LOGFILE
 #get file names
 files=$(ls | grep nfo)
