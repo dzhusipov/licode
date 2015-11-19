@@ -25,7 +25,7 @@ do
 	if [[ $isready = "2" ]] 
 
 	then 
-		NOW=$(date +"%m-%d-%Y %T")
+		NOW=$(date +"%Y-%m-%d %T")
 		echo "$NOW Processing $file" >> $LOGFILE	
 		#processing files by sendint to filenet
 		increment=0
@@ -73,13 +73,13 @@ do
 				fi
 
 				RESULTOFREST=`curl -F "File=@$FINALFILE" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
-				NOW=$(date +"%m-%d-%Y %T")
+				NOW=$(date +"%Y-%m-%d %T")
 				echo "$NOW finale file : $FINALFILE Send result: $RESULTOFREST" >> $LOGFILE
 				
 			fi
 		done
 
-		NOW=$(date +"%m-%d-%Y %T")
+		NOW=$(date +"%Y-%m-%d %T")
 		echo "$NOW Removing files $CLIENTFILE $AGENTFILE $FINALFILE agent_sound.mp3" >> $LOGFILE
 
 		echo "finished" >> $file
