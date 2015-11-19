@@ -7,12 +7,13 @@ LOGFILEPATH=''
 LOFGILE='sender.log'
 NOW=$(date +"%m-%d-%Y %T") 
 echo "$NOW ------------------------ Process started ------------------------ " >> $LOFGILE
-
 #get file names
 files=$(ls | grep nfo)
-file1=''
-file2=''
 
+CLIENTFILE="";
+AGENTFILE="";
+
+FINALFILE="";
 for file in $files
 do
 	#count ready words
@@ -29,30 +30,47 @@ do
 		do
 			((increment++))
 			iin=${file:0:${#file} - 4}
+			FINALFILE="$iin.mkv"
 			#echo "	finded iin is: $iin" >> $LOFGILE	
 			if [[ $increment = "1" ]]
 			then 
+				#get role of video
+				role=$(echo $line | tr -d '\r'| awk {'printf $1'})
 				file1=$(echo $line | tr -d '\r'| awk {'printf $4'})
-				RESULTOFREST=`curl -F "File=@$file1" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
-				NOW=$(date +"%m-%d-%Y %T")
-				echo "$NOW file : $file1	Send result: $RESULTOFREST" >> $LOFGILE
+
+				if [[ $role = "agent" ]]
+				then
+					ffmpeg -i $file1 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3
+					AGENTFILE=$file1
+				else
+					CLIENTFILE=$file1
+				fi
 			fi
 			if [[ $increment = "2" ]]
 			then 
-				file2=$(echo $line | tr -d '\r'| awk {'printf $4'})
-				RESULTOFREST=`curl -F "File=@$file2" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
+				role=$(echo $line | tr -d '\r'| awk {'printf $1'})
+				file2=$(echo  $line | tr -d '\r'| awk {'printf $4'})
+
+				if [[ $role = "client" ]]
+				then
+					ffmpeg -i agent_sound.mp3 -i $file2 "$FINALFILE"
+					CLIENTFILE=$file2
+				else
+					ffmpeg -i $file2 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3
+					ffmpeg -i agent_sound.mp3 -i $CLIENTFILE "$FINALFILE"
+					AGENTFILE=$file2
+				fi
+
+				RESULTOFREST=`curl -F "File=@$FINALFILE" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
 				NOW=$(date +"%m-%d-%Y %T")
-				echo "$NOW file : $file2	Send result: $RESULTOFREST" >> $LOFGILE
+				echo "$NOW finile file : $FINALFILE Send result: $RESULTOFREST" >> $LOFGILE
+				
 			fi
-		 	#echo $increment
-		 	#echo $line
 		done
-		#delete files
+
 		NOW=$(date +"%m-%d-%Y %T")
-		echo "$NOW Removing files $file1 $file2 $file" >> $LOFGILE
-		#rm $file1
-		#rm $file2
-		#rm $file
+		echo "$NOW Removing files $CLIENTFILE $AGENTFILE $FINALFILE agent_sound.mp3" >> $LOFGILE
+
 		echo "finished" >> $file
 		echo "$NOW *" >> $LOFGILE
 	fi
