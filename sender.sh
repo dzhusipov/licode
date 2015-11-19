@@ -72,7 +72,7 @@ do
 
 				RESULTOFREST=`curl -F "File=@$FINALFILE" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
 				NOW=$(date +"%m-%d-%Y %T")
-				echo "$NOW finile file : $FINALFILE Send result: $RESULTOFREST" >> $LOGFILE
+				echo "$NOW finale file : $FINALFILE Send result: $RESULTOFREST" >> $LOGFILE
 				
 			fi
 		done
