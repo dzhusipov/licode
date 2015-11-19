@@ -67,8 +67,8 @@ do
 					ffmpeg -v quiet -y -i "$file2" -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 </dev/null
 					#echo "ffmpeg -v quiet -i agent_sound.mp3 -i $CLIENTFILE $FINALFILE"
 					clientvideoline=$(head -n 1 $file)
-					echo $clientvideoline
-					ffmpeg -i "$CLIENTFILE" -i agent_sound.mp3 -filter_complex "[0:a][1:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a libvorbis -ac 2 -shortest "$FINALFILE" </dev/null
+					clientfile=$(echo  $clientvideoline | tr -d '\r'| awk {'printf $4'})
+					ffmpeg -i "$clientfile" -i agent_sound.mp3 -filter_complex "[0:a][1:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a libvorbis -ac 2 -shortest "$FINALFILE" </dev/null
 					AGENTFILE=$file2
 				fi
 
