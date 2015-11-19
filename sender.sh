@@ -4,10 +4,10 @@
 cd /var/www/html/rec
 
 #creating log
-LOGFILEPATH=''
-DATENOW=$(date +"%m-%d-%Y")
+
+DATENOWIS=$(date +"%m-%d-%Y")
 LOGNAME="sender.log"
-LOGFILE="$DATENOW_$LOGNAME"
+LOGFILE="$DATENOWIS_$LOGNAME"
 FFMPEGLOGFILE='ffmpeg.log'
 NOW=$(date +"%m-%d-%Y %T") 
 echo "$NOW ------------------------ Process started ------------------------ " >> $LOGFILE
@@ -44,8 +44,8 @@ do
 
 				if [[ $role = "agent" ]]
 				then
-					echo "ffmpeg -v quiet -y -i $file1 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3"
-					#ffmpeg -v quiet -y -i "$file1" -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 
+					#echo "ffmpeg -v quiet -y -i $file1 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3"
+					ffmpeg -v quiet -y -i "$file1" -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3 
 					AGENTFILE=$file1
 				else
 					CLIENTFILE=$file1
@@ -59,13 +59,13 @@ do
 				if [[ $role = "client" ]]
 				then
 					CLIENTFILE=$file2
-					echo "ffmpeg -v quiet -i agent_sound.mp3 -i $CLIENTFILE $FINALFILE"
-					#ffmpeg -v quiet -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"
+					#echo "ffmpeg -v quiet -i agent_sound.mp3 -i $CLIENTFILE $FINALFILE"
+					ffmpeg -v quiet -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"
 				else
-					echo "ffmpeg -v quiet -y -i $file2 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3"
-					#ffmpeg -v quiet -y -i "$file2" -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3
-					echo "ffmpeg -v quiet -i agent_sound.mp3 -i $CLIENTFILE $FINALFILE"
-					#ffmpeg -v quiet -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"
+					#echo "ffmpeg -v quiet -y -i $file2 -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3"
+					ffmpeg -v quiet -y -i "$file2" -vn -ar 44100 -ac 2 -ab 192 -f mp3 agent_sound.mp3
+					#echo "ffmpeg -v quiet -i agent_sound.mp3 -i $CLIENTFILE $FINALFILE"
+					ffmpeg -v quiet -i agent_sound.mp3 -i "$CLIENTFILE" "$FINALFILE"
 					AGENTFILE=$file2
 				fi
 
