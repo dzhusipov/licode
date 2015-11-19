@@ -14,10 +14,10 @@ echo "$NOW ------------------------ Process started ------------------------ " >
 #get file names
 files=$(ls | grep nfo)
 
-CLIENTFILE="";
-AGENTFILE="";
+CLIENTFILE="client";
+AGENTFILE="agent";
 
-FINALFILE="";
+FINALFILE="final";
 for file in $files
 do
 	#count ready words
