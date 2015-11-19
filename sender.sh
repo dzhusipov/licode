@@ -6,10 +6,11 @@ cd /var/www/html/rec
 #creating log
 LOGFILEPATH=''
 DATENOW=$(date +"%m-%d-%Y")
-LOFGILE="$DATENOW_sender.log"
-FFMPEGLOFGILE='ffmpeg.log'
+LOGNAME="sender.log"
+LOGFILE="$DATENOW_$LOGNAME"
+FFMPEGLOGFILE='ffmpeg.log'
 NOW=$(date +"%m-%d-%Y %T") 
-echo "$NOW ------------------------ Process started ------------------------ " >> $LOFGILE
+echo "$NOW ------------------------ Process started ------------------------ " >> $LOGFILE
 #get file names
 files=$(ls | grep nfo)
 
@@ -25,7 +26,7 @@ do
 
 	then 
 		NOW=$(date +"%m-%d-%Y %T")
-		echo "$NOW Processing $file" >> $LOFGILE	
+		echo "$NOW Processing $file" >> $LOGFILE	
 		#processing files by sendint to filenet
 		increment=0
 		
@@ -34,7 +35,7 @@ do
 			((increment++))
 			iin=${file:0:${#file} - 4}
 			FINALFILE="$iin.mkv"
-			echo "	FINALFILE=$FINALFILE" >> $LOFGILE	
+			echo "	FINALFILE=$FINALFILE" >> $LOGFILE	
 			if [[ $increment = "1" ]]
 			then 
 				#get role of video
@@ -70,15 +71,15 @@ do
 
 				RESULTOFREST=`curl -F "File=@$FINALFILE" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
 				NOW=$(date +"%m-%d-%Y %T")
-				echo "$NOW finile file : $FINALFILE Send result: $RESULTOFREST" >> $LOFGILE
+				echo "$NOW finile file : $FINALFILE Send result: $RESULTOFREST" >> $LOGFILE
 				
 			fi
 		done
 
 		NOW=$(date +"%m-%d-%Y %T")
-		echo "$NOW Removing files $CLIENTFILE $AGENTFILE $FINALFILE agent_sound.mp3" >> $LOFGILE
+		echo "$NOW Removing files $CLIENTFILE $AGENTFILE $FINALFILE agent_sound.mp3" >> $LOGFILE
 
 		echo "finished" >> $file
-		echo "$NOW *" >> $LOFGILE
+		echo "$NOW *" >> $LOGFILE
 	fi
 done
