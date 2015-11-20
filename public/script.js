@@ -42,7 +42,7 @@ function startRecording () {
 window.onbeforeunload = function (evt) {
   console.log('stopping video recording');
   var iin = document.getElementById('IIN').value;
-
+  var ROLE = document.getElementById('ROLE').value
   $.ajax({
       url: '/videoEnd/' + iin,
       success: function(res){
@@ -183,6 +183,7 @@ window.onload = function () {
         if (stream.elementID !== undefined) {
           var element = document.getElementById(stream.elementID);
           document.getElementById('secondVideo').removeChild(element);
+          
         }
       });
       
