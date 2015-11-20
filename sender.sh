@@ -93,7 +93,7 @@ do
 
 		filenamesended=${file:0:${#file} - 4}
 		mv "$filenamesended.mkv" sended/"$filenamesended.mkv"
-		mv $file sended/$file
+		mv $file trash/$file
 		echo "$NOW *" >> $LOGFILE
 	fi
 done
