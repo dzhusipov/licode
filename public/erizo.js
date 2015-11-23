@@ -2987,7 +2987,7 @@ Erizo.Room = function(b) {
     };
     a.startRecording =
         function(a, b) {
-            L.Logger.debug("Start Recording streamaa1: " + a.getID());
+            L.Logger.debug("Start Recording streamaa1111: " + a.getID());
             d("startRecorder", {
                 to: a.getID()
             }, function(a, c) {
