@@ -60,6 +60,7 @@ function stopRecordingOnEvt() {
 
     room.stopRecording(recordingId);
     recording = false;
+
   }
 }
 
@@ -176,6 +177,7 @@ window.onload = function () {
         stream.show("test" + stream.getID());
         console.log('try 2 start recording');
         startRecording();
+        isStopped = false;
       });
 
       room.addEventListener("stream-added", function (streamEvent) {
