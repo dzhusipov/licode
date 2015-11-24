@@ -60,7 +60,7 @@ function stopRecordingOnEvt() {
 
     room.stopRecording(recordingId);
     recording = false;
-
+    isStopped = true;
   }
 }
 
