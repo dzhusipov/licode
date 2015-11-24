@@ -32,6 +32,7 @@ function startRecording () {
       room.startRecording(localStream, function(id) {
         recording = true;
         recordingId = id;
+        document.getElementById('recordingID').value = recordingId;
         setNfoFile(IIN,ROLE,recordingId);
       });
     } 
@@ -39,19 +40,18 @@ function startRecording () {
   
 }
 
-window.onbeforeunload = function (evt) {
+function stopRecordingOnEvt() {
   console.log('stopping video recording');
   var iin = document.getElementById('IIN').value;
-  var ROLE = document.getElementById('ROLE').value
+  var ROLE = document.getElementById('ROLE').value;
   $.ajax({
-      url: '/videoEnd/' + iin,
+      url: '/videoEnd/' + iin + '&' + ROLE + '&' + recordingId,
       success: function(res){
         console.log(res);
       }
     });
 
   room.stopRecording(recordingId);
-  return "Если вы закончили, можете закрывать.";
 }
 
 window.onload = function () {
@@ -183,7 +183,7 @@ window.onload = function () {
         if (stream.elementID !== undefined) {
           var element = document.getElementById(stream.elementID);
           document.getElementById('secondVideo').removeChild(element);
-          
+          stopRecordingOnEvt();
         }
       });
       

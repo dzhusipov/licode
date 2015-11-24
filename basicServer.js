@@ -264,12 +264,16 @@ app.get('/videoInfo/:params',function(req,res){
 
 })
 
-app.get('/videoEnd/:iin',function(req,res){
+app.get('/videoEnd/:params',function(req,res){
     console.log('vidoe finished');
-    var iin = req.params.iin;
+    var params = req.params.params.split('&');
+    var iin = params[0];
+    var role = params[1];
+    var videoid = params[2];
+
     var path = '/var/www/html/rec/';
     var result;
-    fs.appendFile(path + iin + '.nfo','finished' + "\r\n", function (err) {
+    fs.appendFile(path + iin + '.nfo','finished ' + role + ' ' + videoid + '.mkv' + "\r\n", function (err) {
         if (err) throw err;
         result = 'ok';
         console.log(result);
