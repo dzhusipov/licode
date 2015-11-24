@@ -43,7 +43,7 @@ function startRecording () {
 
 window.onbeforeunload = function (evt) {
    console.log('stopping video recording');
-  stopRecordingOnEvt();
+    stopRecordingOnEvt();
  }
 
 function stopRecordingOnEvt() {
@@ -58,6 +58,7 @@ function stopRecordingOnEvt() {
     });
 
   room.stopRecording(recordingId);
+  recording = false;
 }
 
 window.onload = function () {
