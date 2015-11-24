@@ -1,5 +1,5 @@
 var serverUrl = "/";
-var localStream, room, recording, recordingId, globalToken;
+var localStream, room, recording, recordingId, globalToken, isStopped;
 var roomName;
 var roomIdFromName;
 var IIN, ROLE;
@@ -47,21 +47,24 @@ window.onbeforeunload = function (evt) {
  }
 
 function stopRecordingOnEvt() {
-  console.log('stopping video recording');
-  var iin = document.getElementById('IIN').value;
-  var ROLE = document.getElementById('ROLE').value;
-  $.ajax({
-      url: '/videoEnd/' + iin + '&' + ROLE + '&' + recordingId,
-      success: function(res){
-        console.log(res);
-      }
-    });
+  if (!isStopped){
+    console.log('stopping video recording');
+    var iin = document.getElementById('IIN').value;
+    var ROLE = document.getElementById('ROLE').value;
+    $.ajax({
+        url: '/videoEnd/' + iin + '&' + ROLE + '&' + recordingId,
+        success: function(res){
+          console.log(res);
+        }
+      });
 
-  room.stopRecording(recordingId);
-  recording = false;
+    room.stopRecording(recordingId);
+    recording = false;
+  }
 }
 
 window.onload = function () {
+  isStopped = false;
   console.log('onload event');
 
   console.log('starting video');
