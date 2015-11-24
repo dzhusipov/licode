@@ -265,7 +265,7 @@ app.get('/videoInfo/:params',function(req,res){
 })
 
 app.get('/videoEnd/:params',function(req,res){
-    console.log('vidoe finished');
+    console.log('video finished');
     var params = req.params.params.split('&');
     var iin = params[0];
     var role = params[1];

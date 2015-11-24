@@ -40,6 +40,12 @@ function startRecording () {
   
 }
 
+
+window.onbeforeunload = function (evt) {
+   console.log('stopping video recording');
+  stopRecordingOnEvt();
+ }
+
 function stopRecordingOnEvt() {
   console.log('stopping video recording');
   var iin = document.getElementById('IIN').value;
