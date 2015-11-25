@@ -273,7 +273,7 @@ app.get('/videoEnd/:params',function(req,res){
 
     var path = '/var/www/html/rec/';
     var result;
-    if (videoid != 'videoid' && videoid != undefined && videoid != ''){
+    if (videoid != 'undefined' && videoid != undefined && videoid != ''){
         fs.appendFile(path + iin + '.nfo','finished ' + role + ' ' + videoid + '.mkv' + "\r\n", function (err) {
             if (err) throw err;
             result = 'ok';
