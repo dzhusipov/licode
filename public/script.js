@@ -34,6 +34,7 @@ function startRecording () {
         recordingId = id;
         document.getElementById('recordingID').value = recordingId;
         setNfoFile(IIN,ROLE,recordingId);
+        isStopped = false;
       });
     } 
   }
