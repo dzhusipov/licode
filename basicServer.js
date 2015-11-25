@@ -289,7 +289,7 @@ app.get('/finished/:iin',function(req,res){
     var iin = req.params.iin;
     var path = '/var/www/html/rec/';
     var result;
-    fs.appendFile(path + iin + '.nfo','final', function (err) {
+    fs.appendFile(path + iin + '.nfo','final' + "\r\n", function (err) {
         if (err) throw err;
         result = 'ok';
         console.log(result);

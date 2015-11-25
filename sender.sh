@@ -21,23 +21,35 @@ FINALFILE="final";
 for file in $files
 do
 	#count ready words
-	isready=$(grep -o -c finished $file)
+	isready=$(grep -o -c final $file)
 	#f=$(grep -o -c "finished: client" test);
 	#d=$( grep -o -c "finished: agent" test); 
 	#isready=$((f+d)); 
-	if [[ $isready = "2" ]] 
+	if [[ $isready > 0 ]] 
 
 	then 
 		NOW=$(date +"%Y-%m-%d %T")
 		echo "$NOW Processing $file" >> $LOGFILE	
 		#processing files by sendint to filenet
 		increment=0
-		
+		isBrake=0
 		cat $file | while read line
 		do
 			((increment++))
 			iin=${file:0:${#file} - 4}
 			FINALFILE="$iin.mkv"
+
+			if [[ $isBrake > $isready ]] 
+			then
+				break
+			fi
+
+			if [ $increment -eq "final" ] 
+			then
+				increment=0
+				((isBrake++))
+			   	continue  # Переход в начало цикла.
+			fi
 
 			if [[ $increment = "1" ]]
 			then 
@@ -82,7 +94,7 @@ do
 				RESULTOFREST=`curl -F "File=@$FINALFILE" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$iin" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
 				NOW=$(date +"%Y-%m-%d %T")
 				echo "$NOW finale file : $FINALFILE Send result: $RESULTOFREST" >> $LOGFILE
-				
+				increment=0
 			fi
 		done
 
