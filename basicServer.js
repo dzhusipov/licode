@@ -284,6 +284,19 @@ app.get('/videoEnd/:params',function(req,res){
 
 })
 
+app.get('/finished/:iin',function(req,res){
+    console.log('video finished');
+    var iin = req.params.iin;
+    var path = '/var/www/html/rec/';
+    var result;
+    fs.appendFile(path + iin + '.nfo','final', function (err) {
+        if (err) throw err;
+        result = 'ok';
+        console.log(result);
+        res.send(result);
+    });
+
+})
 
 app.use(function(req, res, next) {
     "use strict";
