@@ -37,7 +37,8 @@ do
 		do
 			((increment++))
 			iin=${file:0:${#file} - 4}
-			FINALFILE="$iin.mkv"
+			unicFile=$(date +"%Y-%m-%d-%T")
+			FINALFILE="$iin-$unicFile.mkv"
 
 			if [[ $isBrake > $isready ]] 
 			then
@@ -98,14 +99,12 @@ do
 			fi
 		done
 
-		NOW=$(date +"%Y-%m-%d %T")
-		echo "$NOW Removing files $CLIENTFILE $AGENTFILE $FINALFILE agent_sound.mp3" >> $LOGFILE
 		rm agent_sound.mp3
 		echo "finished" >> $file
 
 		filenamesended=${file:0:${#file} - 4}
-		mv "$filenamesended.mkv" sended/"$filenamesended.mkv"
-		mv $file trash/$file
+		mv "$filenamesended.mkv" sended/"$filenamesended.mkv" --backup=numbered
+		mv $file trash/$file --backup=numbered
 		echo "$NOW *" >> $LOGFILE
 	fi
 done
