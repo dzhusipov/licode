@@ -37,7 +37,7 @@ do
 		do
 			((increment++))
 			iin=${file:0:${#file} - 4}
-			unicFile=$(date +"%Y-%m-%d-%T")
+			unicFile=$(date +"%Y-%m-%d-%H-%M-%S")
 			FINALFILE="$iin-$unicFile.mkv"
 
 			if [[ $isBrake > $isready ]] 
