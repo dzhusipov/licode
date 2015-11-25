@@ -96,14 +96,14 @@ do
 				NOW=$(date +"%Y-%m-%d %T")
 				echo "$NOW finale file : $FINALFILE Send result: $RESULTOFREST" >> $LOGFILE
 				increment=0
+				mv "$FINALFILE" sended/"$FINALFILE" --backup=numbered
 			fi
 		done
 
 		rm agent_sound.mp3
 		echo "finished" >> $file
 
-		filenamesended=${file:0:${#file} - 4}
-		mv "$filenamesended.mkv" sended/"$filenamesended.mkv" --backup=numbered
+		
 		mv $file trash/$file --backup=numbered
 		echo "$NOW *" >> $LOGFILE
 	fi
