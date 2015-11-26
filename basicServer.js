@@ -77,9 +77,9 @@ app.get('/dasm/', function(req, res){
     /*
         cookies mazafaka nah
     */
-    //var params = req.query.split('&')[1];
-    console.log('************************req.query.roomName = ' + req.query.iin);
-    /*
+    var iin = req.query.iin
+
+    
     if (!req.cookies.iin) {
         var hour = 60 * 60 * 1000;
         console.log("in IIN MAZAHAKA NAH");
@@ -89,7 +89,7 @@ app.get('/dasm/', function(req, res){
         countcookie = req.cookies.count+1;
         res.cookie('count', countcookie, { maxAge: hour });
     }
-    */
+    
     //--------------------------------------------------
 
     roomName = req.query.roomName;  //UUID
