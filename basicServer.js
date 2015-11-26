@@ -80,7 +80,7 @@ app.get('/dasm/', function(req, res){
     var iin = req.query.iin
 
     
-    if (req.cookies == undefined) {
+    if (req.cookie == undefined) {
         var hour = 60 * 60 * 1000;
         console.log("first cookie setting");
         res.cookie('iin', iin, { maxAge: hour });
