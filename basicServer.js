@@ -80,6 +80,7 @@ app.get('/dasm/', function(req, res){
     iin = req.query.iin;
     if (!req.cookies.iin) {
         var hour = 60 * 60 * 1000;
+        console.log("in IIN MAZAHAKA NAH");
         res.cookie('iin', iin, { maxAge: hour });
         res.cookie('count', 0, { maxAge: hour });
     }else{
