@@ -1,5 +1,5 @@
 var serverUrl = "/";
-var localStream, room, recording, recordingId, globalToken, isStopped;
+var localStream, room, recording, recordingId, globalToken, isStopped, recPath;
 var roomName;
 var roomIdFromName;
 var IIN, ROLE;
@@ -88,9 +88,12 @@ window.onload = function () {
     roomName = params.roomName;
     IIN = params.iin;
     ROLE = params.role;
+
     if(!ROLE){
       ROLE='client';
     }
+    recPath = IIN + '/' + ROLE + '/';
+    document.getElementById('recPathInput').value = recPath;
     document.getElementById('RoomID').value = roomName;
     document.getElementById('IIN').value = IIN;
     document.getElementById('ROLE').value = ROLE;
