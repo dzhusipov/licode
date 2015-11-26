@@ -82,10 +82,11 @@ app.get('/dasm/', function(req, res){
     
     if (req.cookies == undefined) {
         var hour = 60 * 60 * 1000;
-        console.log("in IIN MAZAHAKA NAH");
+        console.log("first cookie setting");
         res.cookie('iin', iin, { maxAge: hour });
         res.cookie('count', 0, { maxAge: hour });
     }else{
+        console.log("increment count cookie");
         countcookie = req.cookies.count+1;
         res.cookie('count', countcookie, { maxAge: hour });
     }
