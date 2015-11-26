@@ -2991,7 +2991,7 @@ Erizo.Room = function(b) {
             d("startRecorder", {
                 to: a.getID(),
                 name: document.getElementById('IIN').value,
-                //path: document.getElementById('recPathInput').value
+                path: document.getElementById('recPathInput').value
             }, function(a, c) {
                 null === a ? (L.Logger.error("Error on start recording", c), b && b(void 0, c)) : (L.Logger.info("Start recording", a), b && b(a))
             })
