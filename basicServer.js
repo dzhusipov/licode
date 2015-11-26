@@ -73,6 +73,21 @@ var roomNameForSearch
 app.get('/dasm/', function(req, res){
     "use strict";
     // get room name from params
+
+    /*
+        cookies mazafaka nah
+    */
+    iin = req.query.iin;
+    if (!req.cookies.iin) {
+        var hour = 60 * 60 * 1000;
+        res.cookie('iin', iin, { maxAge: hour });
+        res.cookie('count', 0, { maxAge: hour });
+    }else{
+        countcookie = req.cookies.count+1;
+        res.cookie('count', countcookie, { maxAge: hour });
+    }
+    //--------------------------------------------------
+
     roomName = req.query.roomName;  //UUID
 
     //if room name is empty, we change it to default
@@ -85,12 +100,12 @@ app.get('/dasm/', function(req, res){
     console.log('try 2 getRooms');
     N.API.getRooms(function(roomlist) {
             var rooms = JSON.parse(roomlist);
-            console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
-            console.log("Default Room Name is " + roomName);
+            //console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
+            //console.log("Default Room Name is " + roomName);
             var incerentFor = 0;
             for (var room in rooms) {
                 incerentFor++;
-                console.log(incerentFor);
+                //console.log(incerentFor);
                 if (rooms[room].name === roomName){
                         console.log('rooms[room].name : ' + rooms[room].name + '  roomName: ' + roomName);
                         roomIDForMe = rooms[room]._id;
@@ -196,7 +211,7 @@ app.post('/getRoomByName/', function(req, res){
             isRomFinded = false;
             console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
             for (var room in rooms) {
-                console.log('for in ----------');
+                //console.log('for in ----------');
                 if (rooms[room].name === roomNameForSearch){
                         console.log(rooms[room]._id);
                         console.log('Room is finded in getRoomByName');
