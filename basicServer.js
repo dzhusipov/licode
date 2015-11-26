@@ -77,8 +77,8 @@ app.get('/dasm/', function(req, res){
     /*
         cookies mazafaka nah
     */
-    var iin = req.query.split('&')[1];
-    console.log('************************iin = ' + iin);
+    //var params = req.query.split('&')[1];
+    console.log('************************req.query.roomName = ' + req.query.roomName);
     /*
     if (!req.cookies.iin) {
         var hour = 60 * 60 * 1000;
