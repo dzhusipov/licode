@@ -92,7 +92,7 @@ window.onload = function () {
     if(!ROLE){
       ROLE='client';
     }
-    recPath = IIN + '/' + ROLE + '/';
+    recPath = IIN;
     document.getElementById('recPathInput').value = recPath;
     document.getElementById('RoomID').value = roomName;
     document.getElementById('IIN').value = IIN;
