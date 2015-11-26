@@ -223,8 +223,6 @@ app.post('/getRoomByName/', function(req, res){
                         isRomFinded = true;
                         room2send = rooms[room]._id;
                         res.send(rooms[room]._id);
-                }else{
-                    console.log('not finded');
                 }
             }
 
