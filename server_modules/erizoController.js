@@ -641,7 +641,7 @@ var listen = function () {
                 console.log( items) ;
                 recordingId = recordingId + items.length;
                 if (GLOBAL.config.erizoController.recording_path) {
-                    var url = path2rec + '/' + role + '/' + recordingId + '.tmp';
+                    var url = path2rec + '/' + role + '/' + recordingId + '.mkv';
                 } else {
                     var url = '/tmp/' + recordingId + '.mkv';
                 }
@@ -681,16 +681,16 @@ var listen = function () {
 
 
             if (GLOBAL.config.erizoController.recording_path) {
-                var url = path2rec + '/' + role + '/' + recordingId + '.tmp';
+                var url = path2rec + '/' + role + '/' + recordingId + '.mkv';
             } else {
                 url = '/tmp/' + recordingId + '.mkv';
             }
 
             // rename if finished to mkv
-            fs.rename(path2rec + '/' + role + '/' + recordingId + '.tmp', path2rec + '/' + role + '/' + recordingId + '.mkv', function(err) {
+            /*fs.rename(path2rec + '/' + role + '/' + recordingId + '.tmp', path2rec + '/' + role + '/' + recordingId + '.mkv', function(err) {
                 if ( err ) console.log('ERROR: ' + err);
             });
-
+            */
             log.info("erizoController.js: Stoping recording  " + recordingId + " url " + url);
             socket.room.controller.removeExternalOutput(url, callback);
         });
