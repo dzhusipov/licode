@@ -282,18 +282,12 @@ app.get('/videoInfo/:params',function(req,res){
 
 })
 
-app.get('/videoEnd/:params',function(req,res){
+app.get('/videoEnd/:iin',function(req,res){
     console.log('video finished');
-    var params = req.params.params.split('&');
-    var iin = params[0];
-    var role = params[1];
-    var videoid = params[2];
-
-    var path = '/var/www/html/rec/';
-    var result;
-    if (videoid != 'undefined' && videoid != undefined && videoid != ''){
-        fs.appendFile(path + iin + '.nfo','finished ' + role + ' ' + videoid + '.mkv' + "\r\n", function (err) {
-            if (err) throw err;
+    var iin = req.params.id;
+    var path = '/var/www/html/rec/' + iin + '/';
+    fs.appendFile(path + 'finished.nfo','finished' + "\r\n", function (err) {
+        if (err) throw err;
             result = 'ok';
             console.log(result);
             res.send(result);
