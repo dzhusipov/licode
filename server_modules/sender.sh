@@ -34,7 +34,7 @@ do
 			NOW=$(date +"%Y-%m-%d %T")
 			echo "$NOW finale file : $file Send result: $RESULTOFREST" >> $LOGFILE
 			mkdir "$IINROOTPATH/sended/"
-			mv "$IINROOTPATH/$file.mp3" "$IINROOTPATH/sended/sended-$file.mp3"
+			mv "$IINROOTPATH/$file" "$IINROOTPATH/sended/sended-$file"
 		done
 	else
 		echo "Empty"
