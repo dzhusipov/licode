@@ -1,4 +1,6 @@
 #!/bin/bash
+#show logo
+cat logo.dat
 #enter in directory
 ROOT_PATH = "/var/www/html/rec/"
 cd $ROOT_PATH
