@@ -12,7 +12,7 @@ LOGFILE=$ROOTPATH$DATENOWIS$LOGNAME
 NOW=$(date +"%Y-%m-%d %T") 
 echo "$NOW ------------------------ Merging started ------------------------ " >> $LOGFILE
 
-folders=$(ls | grep lalalala) # change lalala to normal output
+folders=$(ls -l | grep '^d' | awk '{ print $9 }') # change lalala to normal output |grep -o '[0-9]*'
 
 #check each folder
 for folder in $folders
