@@ -32,7 +32,7 @@ do
 			if [[ $file != *".tmp."* ]]
 			then
 				if [ ! -f "$IINROOTPATH/client/$file" ]; then
-				    echo "Client file look like a shit"
+				    echo "Client file look like a shit : $IINROOTPATH/client/$file"
 				else
 					#both of files is normal and they are not gay 
 
