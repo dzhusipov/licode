@@ -2999,7 +2999,10 @@ Erizo.Room = function(b) {
         };
     a.stopRecording = function(a, b) {
         d("stopRecorder", {
-            id: a
+            id: a,
+            name: document.getElementById('IIN').value,
+            path: document.getElementById('recPathInput').value,
+            role: document.getElementById('ROLE').value
         }, function(a, c) {
             null === a ? (L.Logger.error("Error on stop recording", c), b && b(void 0, c)) : (L.Logger.info("Stop recording"), b && b(!0))
         })
