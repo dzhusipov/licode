@@ -474,9 +474,9 @@ var listen = function () {
                 if (options.state === 'recording') {
                     var recordingId = sdp;
                     if (GLOBAL.config.erizoController.recording_path) {
-                        url = GLOBAL.config.erizoController.recording_path + recordingId + '.tmp';
+                        url = GLOBAL.config.erizoController.recording_path + recordingId + '.mkv';
                     } else {
-                        url = '/tmp/' + recordingId + '.tmp';
+                        url = '/tmp/' + recordingId + '.mkv';
                     }
                 }
                 socket.room.controller.addExternalInput(id, url, function (result) {
@@ -641,7 +641,7 @@ var listen = function () {
                 console.log( items) ;
                 recordingId = recordingId + items.length;
                 if (GLOBAL.config.erizoController.recording_path) {
-                    var url = path2rec + '/' + role + '/' + recordingId + '.tmp';
+                    var url = path2rec + '/' + role + '/' + recordingId + '.tmp.mkv';
                 } else {
                     var url = '/tmp/' + recordingId + '.mkv';
                 }
@@ -681,13 +681,13 @@ var listen = function () {
 
 
             if (GLOBAL.config.erizoController.recording_path) {
-                var url = path2rec + '/' + role + '/' + recordingId + '.tmp';
+                var url = path2rec + '/' + role + '/' + recordingId + '.tmp.mkv';
             } else {
                 url = '/tmp/' + recordingId + '.mkv';
             }
 
             // rename if finished to mkv
-            /*fs.rename(path2rec + '/' + role + '/' + recordingId + '.tmp', path2rec + '/' + role + '/' + recordingId + '.mkv', function(err) {
+            /*fs.rename(path2rec + '/' + role + '/' + recordingId + '.mkv', path2rec + '/' + role + '/' + recordingId + '.mkv', function(err) {
                 if ( err ) console.log('ERROR: ' + err);
             });
             */
