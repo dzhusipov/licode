@@ -614,26 +614,26 @@ var listen = function () {
                 callback(null, 'Unauthorized');
                 return;
             }
-
-            //dasm123123
+            
+            //dasm
             var streamId = options.to;
             var recordingId = 1;//Math.random() * 1000000000000000000;
 
             var filename = options.name;
-	    var role = options.role;
+	        var role = options.role;
 
             var path2rec = GLOBAL.config.erizoController.recording_path + options.path;
-	    var dir = options.path;
+	        var dir = options.path;
 	
-	    if (!fs.existsSync(path2rec)){
-		    fs.mkdirSync(path2rec);
-	    }
+    	    if (!fs.existsSync(path2rec)){
+    		    fs.mkdirSync(path2rec);
+    	    }
 		
-	    if (!fs.existsSync(path2rec+'/agent/')){
-                    fs.mkdirSync(path2rec+'/agent/');
+    	    if (!fs.existsSync(path2rec+'/agent/')){
+                        fs.mkdirSync(path2rec+'/agent/');
             }
             if (!fs.existsSync(path2rec+'/client/')){
-                    fs.mkdirSync(path2rec+'/client/');
+                fs.mkdirSync(path2rec+'/client/');
             }
 
 
@@ -641,7 +641,7 @@ var listen = function () {
                 console.log( items) ;
                 recordingId = recordingId + items.length;
                 if (GLOBAL.config.erizoController.recording_path) {
-                    var url = path2rec + '/' + role + '/' + recordingId + '.mkv';
+                    var url = path2rec + '/' + role + '/' + recordingId + '.tmp';
                 } else {
                     var url = '/tmp/' + recordingId + '.mkv';
                 }
@@ -656,8 +656,7 @@ var listen = function () {
                         } else {
                             callback(null, 'This stream is not published in this room');
                         }
-                    });
-
+                });
                 } else {
                     callback(null, 'Stream can not be recorded');
                 }
@@ -674,7 +673,7 @@ var listen = function () {
             }
             var recordingId = options.id;
             var url;
-	    var filename = options.name;
+	        var filename = options.name;
             var role = options.role;
 
             var path2rec = GLOBAL.config.erizoController.recording_path + options.path;
@@ -682,10 +681,15 @@ var listen = function () {
 
 
             if (GLOBAL.config.erizoController.recording_path) {
-		var url = path2rec + '/' + role + '/' + recordingId + '.mkv';
+                var url = path2rec + '/' + role + '/' + recordingId + '.tmp';
             } else {
                 url = '/tmp/' + recordingId + '.mkv';
             }
+
+            // rename if finished to mkv
+            fs.rename(path2rec + '/' + role + '/' + recordingId + '.tmp', path2rec + '/' + role + '/' + recordingId + '.mkv', function(err) {
+                if ( err ) console.log('ERROR: ' + err);
+            });
 
             log.info("erizoController.js: Stoping recording  " + recordingId + " url " + url);
             socket.room.controller.removeExternalOutput(url, callback);
