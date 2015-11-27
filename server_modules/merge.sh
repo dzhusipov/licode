@@ -2,13 +2,13 @@
 #show logo
 cat logo.dat
 #enter in directory
-ROOT_PATH="/var/www/html/rec/"
+ROOTPATH="/var/www/html/rec/"
 cd $ROOT_PATH
 
 #log file settings
 DATENOWIS=$(date +"%Y-%m-%d")
 LOGNAME="-merge.log"
-LOGFILE=$ROOT_PATH$DATENOWIS$LOGNAME
+LOGFILE=$ROOTPATH$DATENOWIS$LOGNAME
 NOW=$(date +"%Y-%m-%d %T") 
 echo "$NOW ------------------------ Merging started ------------------------ " >> $LOGFILE
 
@@ -18,7 +18,7 @@ folders=$(ls | grep lalalala) # change lalala to normal output
 for folder in $folders
 do
 	#enter to iin folder
-	IINROOTPATH=$ROOT_PATH$folder
+	IINROOTPATH=$ROOTPATH$folder
 	cd $IINROOTPATH
 	#check is empty folder
 	if [ "$(ls -A $IINROOTPATH)" ];	then
