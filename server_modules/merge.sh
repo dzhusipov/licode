@@ -20,7 +20,6 @@ do
 	#enter to iin folder
 	IINROOTPATH=$ROOTPATH$folder
 	cd $IINROOTPATH
-	echo $IINROOTPATH
 	#check is empty folder
 	if [ "$(ls -A $IINROOTPATH)" ];	then
 
@@ -50,8 +49,6 @@ do
 			fi
 
 		done
-
-		echo "Not Empty"
 	else
 		echo "Empty"
 	fi
