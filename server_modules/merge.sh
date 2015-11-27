@@ -20,6 +20,7 @@ do
 	#enter to iin folder
 	IINROOTPATH=$ROOTPATH$folder
 	cd $IINROOTPATH
+	echo $IINROOTPATH
 	#check is empty folder
 	if [ "$(ls -A $IINROOTPATH)" ];	then
 
@@ -29,7 +30,7 @@ do
 
 			if [[ $file != *".tmp."* ]]
 			then
-				echo "File is a shit";
+				echo "File is a shit: $file";
 			else
 				if [ ! -f "$IINROOTPATH/client/$file" ]; then
 				    echo "Client file look like a shit"
