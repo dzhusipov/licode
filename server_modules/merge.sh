@@ -25,6 +25,8 @@ do
 	if [ "$(ls -A $IINROOTPATH)" ];	then
 
 		#for each file get analog of client video
+		files=$(ls "$IINROOTPATH/agent/" | grep mkv)
+
 		for file in "$IINROOTPATH/agent"
 		do
 
