@@ -35,12 +35,12 @@ do
 				    echo "Client file look like a shit : $IINROOTPATH/client/$file"
 				else
 					#both of files is normal and they are not gay 
-
+					mkdir "$IINROOTPATH/trash/"
 					ffmpeg -v quiet -y -i "$IINROOTPATH/agent/$file" -vn -ar 44100 -ac 2 -ab 192 -f mp3 "$IINROOTPATH/$file.mp3" </dev/null
 					mv "$IINROOTPATH/agent/$file" "$IINROOTPATH/trash/agent-$file"
 
 					ffmpeg -i "$IINROOTPATH/client/$file" -i "$IINROOTPATH/$file.mp3" -filter_complex "[0:a][1:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a libvorbis -ac 2 -shortest "$IINROOTPATH/$file" </dev/null
-					mkdir "$IINROOTPATH/trash/"
+					
 					mv "$IINROOTPATH/client/$file" "$IINROOTPATH/trash/client-$file"
 					mv "$IINROOTPATH/$file.mp3" "$IINROOTPATH/trash/agent-$file.mp3"
 				fi
