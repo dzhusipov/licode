@@ -27,7 +27,7 @@ do
 		#for each file get analog of client video
 		files=$(ls "$IINROOTPATH/agent/" | grep mkv)
 
-		for file in "$IINROOTPATH/agent"
+		for file in $files
 		do
 
 			if [[ $file != *".tmp."* ]]
