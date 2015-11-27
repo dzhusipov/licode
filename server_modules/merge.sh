@@ -22,8 +22,26 @@ do
 	if [ "$(ls -A $IINROOTPATH)" ];	then
 
 		#for each file get analog of client video
-		for files in "$IINROOTPATH/agent"
+		for file in "$IINROOTPATH/agent"
 		do
+
+			if [[ $file != *".tmp."* ]]
+			then
+				echo "File is a shit";
+			else
+				if [ ! -f "$IINROOTPATH/client/$file" ]; then
+				    echo "Client file look like a shit"
+				else
+					#both of files is normal and they are not gay 
+
+					ffmpeg -v quiet -y -i "$IINROOTPATH/agent/$file" -vn -ar 44100 -ac 2 -ab 192 -f mp3 "$IINROOTPATH/$file.mp3" </dev/null
+					mv "$IINROOTPATH/agent/$file" "$IINROOTPATH/trash/agent-$file"
+
+					ffmpeg -i "$IINROOTPATH/client/$file" -i "$IINROOTPATH/$file.mp3" -filter_complex "[0:a][1:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a libvorbis -ac 2 -shortest "$IINROOTPATH/$file" </dev/null
+					mv "$IINROOTPATH/client/$file" "$IINROOTPATH/trash/client-$file"
+					mv "$IINROOTPATH/$file.mp3" "$IINROOTPATH/trash/agent-$file.mp3"
+				fi
+			fi
 
 		done
 
