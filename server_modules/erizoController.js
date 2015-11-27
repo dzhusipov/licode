@@ -641,7 +641,7 @@ var listen = function () {
                 console.log( items) ;
                 recordingId = recordingId + items.length;
                 if (GLOBAL.config.erizoController.recording_path) {
-                    var url = path2rec + '/' + role + '/' + recordingId + '.mkv';
+                    var url = path2rec + '/' + role + '/' + recordingId + '.tmp';
                 } else {
                     var url = '/tmp/' + recordingId + '.mkv';
                 }
@@ -681,7 +681,7 @@ var listen = function () {
 
 
             if (GLOBAL.config.erizoController.recording_path) {
-                var url = path2rec + '/' + role + '/' + recordingId + '.mkv';
+                var url = path2rec + '/' + role + '/' + recordingId + '.tmp';
             } else {
                 url = '/tmp/' + recordingId + '.mkv';
             }
