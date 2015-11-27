@@ -474,9 +474,9 @@ var listen = function () {
                 if (options.state === 'recording') {
                     var recordingId = sdp;
                     if (GLOBAL.config.erizoController.recording_path) {
-                        url = GLOBAL.config.erizoController.recording_path + recordingId + '.mkv';
+                        url = GLOBAL.config.erizoController.recording_path + recordingId + '.tmp';
                     } else {
-                        url = '/tmp/' + recordingId + '.mkv';
+                        url = '/tmp/' + recordingId + '.tmp';
                     }
                 }
                 socket.room.controller.addExternalInput(id, url, function (result) {
