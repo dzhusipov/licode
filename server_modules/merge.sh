@@ -32,8 +32,6 @@ do
 
 			if [[ $file != *".tmp."* ]]
 			then
-				echo "File is a shit: $file";
-			else
 				if [ ! -f "$IINROOTPATH/client/$file" ]; then
 				    echo "Client file look like a shit"
 				else
@@ -46,6 +44,8 @@ do
 					mv "$IINROOTPATH/client/$file" "$IINROOTPATH/trash/client-$file"
 					mv "$IINROOTPATH/$file.mp3" "$IINROOTPATH/trash/agent-$file.mp3"
 				fi
+			else
+				echo "File is a shit: $file";
 			fi
 
 		done
