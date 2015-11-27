@@ -641,9 +641,9 @@ var listen = function () {
                 console.log( items) ;
                 recordingId = recordingId + items.length;
                 if (GLOBAL.config.erizoController.recording_path) {
-                    var url = path2rec + '/' + role + '/' + recordingId + '_tmp.mkv';
+                    var url = path2rec + '/' + role + '/' + recordingId + '.tmp.mkv';
                 } else {
-                    var url = '/tmp/' + recordingId + '.mkv';
+                    var url = '/tmp/' + recordingId + '.tmp.mkv';
                 }
 
                 log.info("erizoController.js: Starting recorder streamID " + streamId + "url ", url);
@@ -681,16 +681,16 @@ var listen = function () {
 
 
             if (GLOBAL.config.erizoController.recording_path) {
-                var url = path2rec + '/' + role + '/' + recordingId + '_tmp.mkv';
+                var url = path2rec + '/' + role + '/' + recordingId + '.tmp.mkv';
             } else {
-                url = '/tmp/' + recordingId + '.mkv';
+                url = '/tmp/' + recordingId + '.tmp.mkv';
             }
 
             // rename if finished to mkv
-            /*fs.rename(path2rec + '/' + role + '/' + recordingId + '.mkv', path2rec + '/' + role + '/' + recordingId + '.mkv', function(err) {
+            fs.rename(path2rec + '/' + role + '/' + recordingId + '.tmp.mkv', path2rec + '/' + role + '/' + recordingId + '.mkv', function(err) {
                 if ( err ) console.log('ERROR: ' + err);
             });
-            */
+            
             log.info("erizoController.js: Stoping recording  " + recordingId + " url " + url);
             socket.room.controller.removeExternalOutput(url, callback);
         });
