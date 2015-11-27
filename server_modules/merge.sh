@@ -41,6 +41,7 @@ do
 					mv "$IINROOTPATH/agent/$file" "$IINROOTPATH/trash/agent-$file"
 
 					ffmpeg -i "$IINROOTPATH/client/$file" -i "$IINROOTPATH/$file.mp3" -filter_complex "[0:a][1:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a libvorbis -ac 2 -shortest "$IINROOTPATH/$file" </dev/null
+					mkdir "$IINROOTPATH/trash/"
 					mv "$IINROOTPATH/client/$file" "$IINROOTPATH/trash/client-$file"
 					mv "$IINROOTPATH/$file.mp3" "$IINROOTPATH/trash/agent-$file.mp3"
 				fi
