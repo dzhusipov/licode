@@ -24,24 +24,11 @@ do
 	NOW=$(date +"%Y-%m-%d %T") 
 	echo "$NOW Path is $IINROOTPATH" >> $LOGFILE
 	#check is empty folder
-	if [ "$(ls -A $IINROOTPATH/client)" ];	then
+	if [ ! "$(ls -A $IINROOTPATH/client)" ] && [ ! "$(ls -A $IINROOTPATH/agent)" ] && [ ! "$(ls -A $IINROOTPATH/screen)" ] && [ ! "$(ls -A server_modules/*mkv)" ]
+	then
 		NOW=$(date +"%Y-%m-%d %T") 
-		echo "$NOW notEmpty client $IINROOTPATH/client" >> $LOGFILE
-	else
-
-		if [ "$(ls -A $IINROOTPATH/agent)" ];	then
-			NOW=$(date +"%Y-%m-%d %T") 
-			echo "$NOW notEmpty agent $IINROOTPATH/agent" >> $LOGFILE
-		else
-			if [ ! -d "$IINROOTPATH/screen/" ]; then
-				#remove all nah
-				NOW=$(date +"%Y-%m-%d %T") 
-				echo "$NOW rm -rf $IINROOTPATH" >> $LOGFILE
-				rm -rf $IINROOTPATH
-			fi
-			
-		fi
-
+		echo "$NOW rm -rf $IINROOTPATH" >> $LOGFILE
+		rm -rf $IINROOTPATH
 	fi
 done
 

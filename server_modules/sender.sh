@@ -53,8 +53,8 @@ do
 					else
 						NOW=$(date +"%Y-%m-%d %T")
 						echo "$NOW finale file : $file Send result: document id - ${array[2]}" >> $LOGFILE
-						mkdir "$IINROOTPATH/sended/"
-						mv "$IINROOTPATH/$file" "$IINROOTPATH/sended/sended-$file"
+						mkdir "$IINROOTPATH/sent/"
+						mv "$IINROOTPATH/$file" "$IINROOTPATH/sent/sent-$file"
 					fi
 					
 				fi
