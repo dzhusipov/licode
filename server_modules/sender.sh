@@ -34,10 +34,37 @@ do
 			NOW=$(date +"%Y-%m-%d %T") 
 			echo "$NOW File is $file" >> $LOGFILE
 			RESULTOFREST=`curl -F "File=@$file" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$IIN" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
-			NOW=$(date +"%Y-%m-%d %T")
-			echo "$NOW finale file : $file Send result: $RESULTOFREST" >> $LOGFILE
-			mkdir "$IINROOTPATH/sended/"
-			mv "$IINROOTPATH/$file" "$IINROOTPATH/sended/sended-$file"
+			
+			if [ -z "$RESULTOFREST" ]; then
+			    NOW=$(date +"%Y-%m-%d %T")
+				echo "$NOW finale file : $file Send result: Response is empty. Something wrong" >> $LOGFILE
+			else
+				IFS='}' read -r -a array <<< "$RESULTOFREST" ;
+				IFS='{' read -r -a array <<< "${array[0]}"; 
+
+				if [ -z "${array[1]}" ]; then
+					NOW=$(date +"%Y-%m-%d %T")
+					echo "$NOW finale file : $file Send result: can't find id in response. $RESULTOFREST" >> $LOGFILE
+					mkdir "$IINROOTPATH/screen/"
+					mv "$IINROOTPATH/$file" "$IINROOTPATH/screen/cant-sended-$file"
+				else
+
+					if [ -z "${array[2]}" ]; then
+						NOW=$(date +"%Y-%m-%d %T")
+						echo "$NOW finale file : $file Send result: id is empty. $RESULTOFREST" >> $LOGFILE
+						mkdir "$IINROOTPATH/screen/"
+					mv "$IINROOTPATH/$file" "$IINROOTPATH/screen/cant-sended-$file"
+					else
+						NOW=$(date +"%Y-%m-%d %T")
+						echo "$NOW finale file : $file Send result: document id - ${array[2]}" >> $LOGFILE
+						mkdir "$IINROOTPATH/sended/"
+						mv "$IINROOTPATH/$file" "$IINROOTPATH/sended/sended-$file"
+					fi
+					
+				fi
+				
+			fi
+			
 		done
 	else
 		echo "Empty"
