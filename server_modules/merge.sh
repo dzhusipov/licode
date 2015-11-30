@@ -27,27 +27,23 @@ do
 		files=$(ls "$IINROOTPATH/agent/" | grep mkv)
 
 		for file in $files
-		do
 
-			if [[ $file != *".tmp."* ]]
-			then
-				if [ ! -f "$IINROOTPATH/client/$file" ]; then
-				    echo "Client file look like a shit : $IINROOTPATH/client/$file"
-				else
-					#both of files is normal and they are not gay 
-					mkdir "$IINROOTPATH/trash/"
-					ffmpeg -v quiet -y -i "$IINROOTPATH/agent/$file" -vn -ar 44100 -ac 2 -ab 192 -f mp3 "$IINROOTPATH/$file.mp3" </dev/null
-					mv "$IINROOTPATH/agent/$file" "$IINROOTPATH/trash/agent-$file"
-
-					ffmpeg -i "$IINROOTPATH/client/$file" -i "$IINROOTPATH/$file.mp3" -filter_complex "[0:a][1:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a libvorbis -ac 2 -shortest "$IINROOTPATH/$file" </dev/null
-					
-					mv "$IINROOTPATH/client/$file" "$IINROOTPATH/trash/client-$file"
-					mv "$IINROOTPATH/$file.mp3" "$IINROOTPATH/trash/agent-$file.mp3"
-				fi
+			if [ ! -f "$IINROOTPATH/client/$file" ]; then
+				mkdir "$IINROOTPATH/screen/" 
+			    NOW=$(date +"%Y-%m-%d %T") 
+				echo "$NOW moove files to screen" >> $LOGFILE
+				mv "$IINROOTPATH/client/$file" "$IINROOTPATH/screen/client-$file"
 			else
-				echo "File is a shit: $file";
-			fi
+				#both of files is normal and they are not gay 
+				mkdir "$IINROOTPATH/trash/"
+				ffmpeg -v quiet -y -i "$IINROOTPATH/agent/$file" -vn -ar 44100 -ac 2 -ab 192 -f mp3 "$IINROOTPATH/$file.mp3" </dev/null
+				mv "$IINROOTPATH/agent/$file" "$IINROOTPATH/trash/agent-$file"
 
+				ffmpeg -i "$IINROOTPATH/client/$file" -i "$IINROOTPATH/$file.mp3" -filter_complex "[0:a][1:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a libvorbis -ac 2 -shortest "$IINROOTPATH/$file" </dev/null
+				
+				mv "$IINROOTPATH/client/$file" "$IINROOTPATH/trash/client-$file"
+				mv "$IINROOTPATH/$file.mp3" "$IINROOTPATH/trash/agent-$file.mp3"
+			fi
 		done
 	else
 		echo "Empty"

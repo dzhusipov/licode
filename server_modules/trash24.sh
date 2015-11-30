@@ -33,10 +33,13 @@ do
 			NOW=$(date +"%Y-%m-%d %T") 
 			echo "$NOW notEmpty agent $IINROOTPATH/agent" >> $LOGFILE
 		else
-			#remove all nah
-			NOW=$(date +"%Y-%m-%d %T") 
-			echo "$NOW rm -rf $IINROOTPATH" >> $LOGFILE
-			rm -rf $IINROOTPATH
+			if [ ! -d "$IINROOTPATH/screen/" ]; then
+				#remove all nah
+				NOW=$(date +"%Y-%m-%d %T") 
+				echo "$NOW rm -rf $IINROOTPATH" >> $LOGFILE
+				rm -rf $IINROOTPATH
+			fi
+			
 		fi
 
 	fi

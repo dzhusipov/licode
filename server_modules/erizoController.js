@@ -635,8 +635,57 @@ var listen = function () {
             if (!fs.existsSync(path2rec+'/client/')){
                 fs.mkdirSync(path2rec+'/client/');
             }
+            //---------------------------------------------------------------
+            var folder1 =  path2rec + '/agent/';
+            var folder2 =  path2rec + '/client/';
+            var folder1count = 0;
+            var folder2count = 0;
+
+            fs.readdir(folder1, function(err, items) {
+                console.log( items) ;
+                folder1count = items.length;
+
+                fs.readdir(folder2, function(err, items) {
+                    console.log( items) ;
+                    folder2count = items.length;
+
+                    if (folder1count > folder2count){
+                        recordingId = recordingId + folder1count;
+                    }else{
+                        recordingId = recordingId + folder2count;
+                    }
+
+                    
+                    if (GLOBAL.config.erizoController.recording_path) {
+                        var url = path2rec + '/' + role + '/' + recordingId + '.mkv';
+                    } else {
+                        var url = '/tmp/' + recordingId + '.mkv';
+                    }
+
+                    log.info("erizoController.js: Starting recorder streamID " + streamId + "url ", url);
+
+                    if (socket.room.streams[streamId].hasAudio() || socket.room.streams[streamId].hasVideo() || socket.room.streams[streamId].hasScreen()) {
+                        socket.room.controller.addExternalOutput(streamId, url, function (result) {
+                            if (result === 'success') {
+                                log.info("erizoController.js: Recorder Started");
+                                callback(recordingId);
+                            } else {
+                                callback(null, 'This stream is not published in this room');
+                            }
+                    });
+                    } else {
+                        callback(null, 'Stream can not be recorded');
+                    }
+                    
 
 
+
+                });
+
+            });
+
+            //---------------------------------------------------------------
+            /*
             fs.readdir( path2rec + '/' + role + '/', function(err, items) {
                 console.log( items) ;
                 recordingId = recordingId + items.length;
@@ -661,7 +710,7 @@ var listen = function () {
                     callback(null, 'Stream can not be recorded');
                 }
             });
-
+            */
         });
 
         // Gets 'stopRecorder' messages
