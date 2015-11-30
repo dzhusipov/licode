@@ -20,6 +20,12 @@ do
 	#enter to iin folder
 	IINROOTPATH=$ROOTPATH$folder
 
+	if [ ! -f "$IINROOTPATH/$folder.nfo" ]; then
+		NOW=$(date +"%Y-%m-%d %T") 
+		echo "$NOW $IINROOTPATH not finished" >> $LOGFILE
+    	continue
+	fi
+	
 	IIN=$folder
 	NOW=$(date +"%Y-%m-%d %T") 
 	echo "$NOW Path is $IINROOTPATH" >> $LOGFILE
