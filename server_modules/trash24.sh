@@ -25,12 +25,12 @@ do
 		echo "$NOW $IINROOTPATH not finished" >> $LOGFILE
     	continue
 	fi
-	
+
 	IIN=$folder
 	NOW=$(date +"%Y-%m-%d %T") 
 	echo "$NOW Path is $IINROOTPATH" >> $LOGFILE
 	#check is empty folder
-	if [ ! "$(ls -A $IINROOTPATH/client)" ] && [ ! "$(ls -A $IINROOTPATH/agent)" ] && [ ! "$(ls -A $IINROOTPATH/screen)" ] && [ ! "$(ls -A server_modules/*mkv)" ]
+	if [ ! "$(ls -A $IINROOTPATH/client/*mkv)" ] && [ ! "$(ls -A $IINROOTPATH/agent/*mkv)" ] && [ ! "$(ls -A $IINROOTPATH/screen/*mkv)" ] && [ ! "$(ls -A $IINROOTPATH/*mkv)" ]
 	then
 		NOW=$(date +"%Y-%m-%d %T") 
 		echo "$NOW rm -rf $IINROOTPATH" >> $LOGFILE

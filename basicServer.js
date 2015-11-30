@@ -272,13 +272,16 @@ app.get('/videoInfo/:params',function(req,res){
     var videoName = paramsArr[2];
     var role = paramsArr[1];
     var path = '/var/www/html/rec/';
-    var result;
+    var result;/*
     fs.appendFile(path + iin + '.nfo', role + ' video - ' + videoName + '.mkv' + "\r\n", function (err) {
         if (err) throw err;
         result = 'ok';
         console.log(result);
         res.send(result);
-    });
+    });*/
+    result = 'ok';
+    console.log(result);
+    res.send(result);
 
 })
 
