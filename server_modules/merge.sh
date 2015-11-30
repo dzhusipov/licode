@@ -27,7 +27,7 @@ do
 		files=$(ls "$IINROOTPATH/agent/" | grep mkv)
 
 		for file in $files
-
+		do
 			if [ ! -f "$IINROOTPATH/client/$file" ]
 			then
 				mkdir "$IINROOTPATH/screen/" 
