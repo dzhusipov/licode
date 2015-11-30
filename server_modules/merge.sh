@@ -30,10 +30,7 @@ do
 		do
 			if [ ! -f "$IINROOTPATH/client/$file" ]
 			then
-				mkdir "$IINROOTPATH/screen/" 
-			    NOW=$(date +"%Y-%m-%d %T") 
-				echo "$NOW moove files to screen" >> $LOGFILE
-				mv "$IINROOTPATH/client/$file" "$IINROOTPATH/screen/client-$file"
+				echo "file client $file not found"
 			else
 				#both of files is normal and they are not gay 
 				mkdir "$IINROOTPATH/trash/"
@@ -45,6 +42,24 @@ do
 				mv "$IINROOTPATH/client/$file" "$IINROOTPATH/trash/client-$file"
 				mv "$IINROOTPATH/$file.mp3" "$IINROOTPATH/trash/agent-$file.mp3"
 			fi
+		done
+
+		files=$(ls "$IINROOTPATH/agent/" | grep mkv)
+		for file in $files
+		do
+			mkdir "$IINROOTPATH/screen/" 
+			mv "$IINROOTPATH/agent/$file" "$IINROOTPATH/screen/agent-$file"
+			NOW=$(date +"%Y-%m-%d %T") 
+			echo "$NOW move files to screen" >> $LOGFILE
+		done
+
+		files=$(ls "$IINROOTPATH/client/" | grep mkv)
+		for file in $files
+		do
+			mkdir "$IINROOTPATH/screen/" 
+			mv "$IINROOTPATH/client/$file" "$IINROOTPATH/screen/client-$file"
+			NOW=$(date +"%Y-%m-%d %T") 
+			echo "$NOW move files to screen" >> $LOGFILE
 		done
 	else
 		echo "Empty"

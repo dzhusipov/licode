@@ -7,7 +7,7 @@ cd $ROOT_PATH
 
 #log file settings
 DATENOWIS=$(date +"%Y-%m-%d")
-LOGNAME="-merge.log"
+LOGNAME="-trash.log"
 LOGFILE=$ROOTPATH$DATENOWIS$LOGNAME
 NOW=$(date +"%Y-%m-%d %T") 
 echo "$NOW ------------------------ Trash24 started ------------------------ " >> $LOGFILE

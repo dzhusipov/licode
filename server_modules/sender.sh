@@ -7,7 +7,7 @@ cd $ROOT_PATH
 
 #log file settings
 DATENOWIS=$(date +"%Y-%m-%d")
-LOGNAME="-merge.log"
+LOGNAME="-sender.log"
 LOGFILE=$ROOTPATH$DATENOWIS$LOGNAME
 NOW=$(date +"%Y-%m-%d %T") 
 echo "$NOW ------------------------ Sending started ------------------------ " >> $LOGFILE
@@ -46,6 +46,7 @@ do
 					NOW=$(date +"%Y-%m-%d %T")
 					echo "$NOW finale file : $file Send result: can't find id in response. $RESULTOFREST" >> $LOGFILE
 					mkdir "$IINROOTPATH/screen/"
+					#не переносить
 					mv "$IINROOTPATH/$file" "$IINROOTPATH/screen/cant-sended-$file"
 				else
 
