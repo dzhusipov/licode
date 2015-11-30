@@ -21,16 +21,22 @@ do
 	IINROOTPATH=$ROOTPATH$folder
 
 	IIN=$folder
+	NOW=$(date +"%Y-%m-%d %T") 
+	echo "$NOW Path is $IINROOTPATH" >> $LOGFILE
 	#check is empty folder
 	if [ "$(ls -A $IINROOTPATH/client)" ];	then
-		echo "notEmpty client"
+		NOW=$(date +"%Y-%m-%d %T") 
+		echo "$NOW notEmpty client $IINROOTPATH/client" >> $LOGFILE
 	else
 
 		if [ "$(ls -A $IINROOTPATH/agent)" ];	then
-			echo "notEmpty agent"
+			NOW=$(date +"%Y-%m-%d %T") 
+			echo "$NOW notEmpty agent $IINROOTPATH/agent" >> $LOGFILE
 		else
 			#remove all nah
-			echo "rm -rf $IINROOTPATH"
+			NOW=$(date +"%Y-%m-%d %T") 
+			echo "$NOW rm -rf $IINROOTPATH" >> $LOGFILE
+			rm -rf $IINROOTPATH
 		fi
 
 	fi

@@ -20,7 +20,8 @@ do
 	#enter to iin folder
 	IINROOTPATH=$ROOTPATH$folder
 	cd $IINROOTPATH
-
+	NOW=$(date +"%Y-%m-%d %T") 
+	echo "$NOW Path is $IINROOTPATH" >> $LOGFILE
 	IIN=$folder
 	#check is empty folder
 	if [ "$(ls -A $IINROOTPATH)" ];	then
@@ -30,6 +31,8 @@ do
 
 		for file in $files
 		do
+			NOW=$(date +"%Y-%m-%d %T") 
+			echo "$NOW File is $file" >> $LOGFILE
 			RESULTOFREST=`curl -F "File=@$file" -F "DocumentType=VEREF" -H "Role:Client" -H "IIN:$IIN" -H "Content-Type:multipart/form-data" --request POST http://192.168.15.3:9082/ecmapi/json/documents?DocumentType=VEREF`
 			NOW=$(date +"%Y-%m-%d %T")
 			echo "$NOW finale file : $file Send result: $RESULTOFREST" >> $LOGFILE
