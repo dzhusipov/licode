@@ -28,7 +28,8 @@ do
 
 		for file in $files
 
-			if [ ! -f "$IINROOTPATH/client/$file" ]; then
+			if [ ! -f "$IINROOTPATH/client/$file" ]
+			then
 				mkdir "$IINROOTPATH/screen/" 
 			    NOW=$(date +"%Y-%m-%d %T") 
 				echo "$NOW moove files to screen" >> $LOGFILE
