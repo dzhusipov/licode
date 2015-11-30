@@ -45,16 +45,11 @@ do
 				if [ -z "${array[1]}" ]; then
 					NOW=$(date +"%Y-%m-%d %T")
 					echo "$NOW finale file : $file Send result: can't find id in response. $RESULTOFREST" >> $LOGFILE
-					mkdir "$IINROOTPATH/screen/"
-					#не переносить
-					mv "$IINROOTPATH/$file" "$IINROOTPATH/screen/cant-sended-$file"
 				else
 
 					if [ -z "${array[2]}" ]; then
 						NOW=$(date +"%Y-%m-%d %T")
 						echo "$NOW finale file : $file Send result: id is empty. $RESULTOFREST" >> $LOGFILE
-						mkdir "$IINROOTPATH/screen/"
-					mv "$IINROOTPATH/$file" "$IINROOTPATH/screen/cant-sended-$file"
 					else
 						NOW=$(date +"%Y-%m-%d %T")
 						echo "$NOW finale file : $file Send result: document id - ${array[2]}" >> $LOGFILE
