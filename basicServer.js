@@ -82,11 +82,6 @@ app.get('/dasm/', function(req, res){
         return 0;
     }
 
-    if (!req.query.iin){
-        res.send('param iin not found');
-        return 0;
-    } 
-
     var iin = req.query.iin
 
     
