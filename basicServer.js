@@ -77,7 +77,7 @@ app.get('/dasm/', function(req, res){
     /*
         cookies mazafaka nah
     */
-    if (!req.query.room){
+    if (!req.query.roomName){
         res.send('param room not found');
         return 0;
     }
