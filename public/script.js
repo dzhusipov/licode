@@ -142,7 +142,7 @@ document.body.appendChild(canvas);
  
 setInterval(function() {
  
-  bitmap = stream.getVideoFrame();
+  bitmap = localStream.getVideoFrame();
  
   canvas.width = bitmap.width;
   canvas.height = bitmap.height;
