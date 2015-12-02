@@ -3,17 +3,6 @@ var localStream, room, recording, recordingId, globalToken, isStopped, recPath;
 var roomName;
 var roomIdFromName;
 var IIN, ROLE;
- 
-
-function setNfoFile(iin,role,videoName){
-   $.ajax({
-      url: '/videoInfo/' + iin + '&' + role + '&' + videoName,
-      success: function(res){
-        console.log(res);
-      }
-    });
-  
-}
 
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -33,7 +22,6 @@ function startRecording () {
         recording = true;
         recordingId = id;
         document.getElementById('recordingID').value = recordingId;
-        setNfoFile(IIN,ROLE,recordingId);
         isStopped = false;
       });
     } 
