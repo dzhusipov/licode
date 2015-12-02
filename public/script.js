@@ -26,9 +26,7 @@ function startRecording () {
       });
     } 
   }
-  
 }
-
 
 window.onbeforeunload = function (evt) {
     console.log('stopping video recording');
