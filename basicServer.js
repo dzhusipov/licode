@@ -289,13 +289,15 @@ app.get('/videoEnd/:iin',function(req,res){
     console.log('video finished');
     var iin = req.params.iin;
     var path = '/var/www/html/rec/' + iin + '/';
-    fs.appendFile(path + 'finished.nfo','finished' + "\r\n", function (err) {
+    /*fs.appendFile(path + 'finished.nfo','finished' + "\r\n", function (err) {
         if (err) throw err;
         result = 'ok';
         console.log(result);
         res.send(result);
-    });
-    
+    });*/
+    result = 'ok';
+    console.log(result);
+    res.send(result);
 })
 
 app.get('/finished/:iin',function(req,res){
