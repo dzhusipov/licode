@@ -132,7 +132,30 @@ window.onload = function () {
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(body));
   };
+  /*--------------*/
+  var bitmap;
+var canvas = document.createElement('canvas');
+var context = canvas.getContext('2d');
+ 
+canvas.id = "testCanvas";
+document.body.appendChild(canvas);
+ 
+setInterval(function() {
+ 
+  bitmap = stream.getVideoFrame();
+ 
+  canvas.width = bitmap.width;
+  canvas.height = bitmap.height;
+ 
+  context.putImageData(bitmap, 0, 0);
+ 
+}, 100);
 
+
+
+
+
+  /*--------------*/
   createToken("user", "presenter", function (response) {
     var token = response;
     globalToken = token;
