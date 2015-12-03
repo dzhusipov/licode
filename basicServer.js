@@ -70,7 +70,7 @@ var roomNameForSearch
 }
 */
 
-var ipList = ['1','2','3'];
+var ipList = ['192.168.250.5','2','3'];
 
 
 app.get('/dasm/', function(req, res){
