@@ -1,1 +1,4 @@
-{audio: true, video: true, data: true, screen: screen, maxFrameRate:60, videoSize: [512, 384, 512, 384]}
+var video_width = [
+  320,  // video width on recording
+  240   // video heigth on recording
+];
