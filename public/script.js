@@ -16,7 +16,7 @@ var video_config = {
     640, 
     480
   ]
-}
+};
 
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
