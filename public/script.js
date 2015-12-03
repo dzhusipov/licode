@@ -4,19 +4,10 @@ var roomName;
 var roomIdFromName;
 var IIN, ROLE;
 
-var video_config = {
-  audio: true, 
-  video: true, 
-  data: true, 
-  screen: screen, 
-  maxFrameRate:60, 
-  videoSize: [
-    640, 
-    480, 
-    640, 
-    480
-  ]
-};
+var video_width = [
+  640,
+  480
+];
 
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -78,7 +69,7 @@ window.onload = function () {
   };
 
   var screen = getParameterByName("screen");
-  var config = {audio: true, video: video_constraints, data: true, screen: screen, videoSize: [640, 480, 640, 480]};
+  var config = {audio: true, video: video_constraints, data: true, screen: screen, videoSize: [video_width[0], video_width[1], video_width[0], video_width[1]]};
   //var config = video_config;
   // If we want screen sharing we have to put our Chrome extension id. The default one only works in our Lynckia test servers.
   // If we are not using chrome, the creation of the stream will fail regardless.
