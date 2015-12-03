@@ -1,0 +1,1 @@
+{audio: true, video: true, data: true, screen: screen, maxFrameRate:60, videoSize: [512, 384, 512, 384]}
