@@ -7,6 +7,6 @@
 */
 
 var video_width = [
-  1024,  // video width on recording
-  768   // video heigth on recording
+  640,  // video width on recording
+  480   // video heigth on recording
 ];
