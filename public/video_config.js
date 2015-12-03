@@ -4,6 +4,7 @@
 	for example:
 	640x480
 	320x240
+	if you change it, you must restart the server.
 */
 
 var video_width = [
