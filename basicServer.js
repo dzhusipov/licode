@@ -70,81 +70,90 @@ var roomNameForSearch
 }
 */
 
+var ipList = ['192.168.5.182','2','3'];
+
+
 app.get('/dasm/', function(req, res){
     "use strict";
-    // get room name from params
 
-    /*
-        cookies mazafaka nah
-    */
-    if (!req.query.roomName){
-        res.send('param room not found');
-        return 0;
-    }
+    var ip = req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
 
-    if (!req.query.iin){
-        res.send('param iin not found');
-        return 0;
-    }
-
-    var iin = req.query.iin
-
-    
-    if (req.cookie == undefined) {
-        var hour = 60 * 60 * 1000;
-        console.log("first cookie setting");
-        res.cookie('iin', iin, { maxAge: hour });
-        res.cookie('count', 0, { maxAge: hour });
+    if (ipList.indexOf(ip) == -1) {
+        res.send('Muahahahahaha : ' + ip);
     }else{
-        console.log("increment count cookie");
-        countcookie = req.cookies.count+1;
-        res.cookie('count', countcookie, { maxAge: hour });
-    }
-    
-    //--------------------------------------------------
+        // get room name from params
 
-    roomName = req.query.roomName;  //UUID
+        /*
+            cookies mazafaka nah
+        */
+        if (!req.query.roomName){
+            res.send('param room not found');
+            return 0;
+        }
 
-    //if room name is empty, we change it to default
+        if (!req.query.iin){
+            res.send('param iin not found');
+            return 0;
+        }
 
-    if (roomName == "" || roomName == undefined){
-        roomName = "testroom";
-    }
+        var iin = req.query.iin
 
-    // we getting rooms and try search room eq. if find? then we attach to it
-    console.log('try 2 getRooms');
-    N.API.getRooms(function(roomlist) {
-            var rooms = JSON.parse(roomlist);
-            //console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
-            //console.log("Default Room Name is " + roomName);
-            var incerentFor = 0;
-            for (var room in rooms) {
-                incerentFor++;
-                //console.log(incerentFor);
-                if (rooms[room].name === roomName){
-                        console.log('rooms[room].name : ' + rooms[room].name + '  roomName: ' + roomName);
-                        roomIDForMe = rooms[room]._id;
-                        console.log("yeeeee we find room " + roomName);
+        
+        if (req.cookie == undefined) {
+            var hour = 60 * 60 * 1000;
+            console.log("first cookie setting");
+            res.cookie('iin', iin, { maxAge: hour });
+            res.cookie('count', 0, { maxAge: hour });
+        }else{
+            console.log("increment count cookie");
+            countcookie = req.cookies.count+1;
+            res.cookie('count', countcookie, { maxAge: hour });
+        }
+        
+        //--------------------------------------------------
+
+        roomName = req.query.roomName;  //UUID
+
+        //if room name is empty, we change it to default
+
+        if (roomName == "" || roomName == undefined){
+            roomName = "testroom";
+        }
+
+        // we getting rooms and try search room eq. if find? then we attach to it
+        console.log('try 2 getRooms');
+        N.API.getRooms(function(roomlist) {
+                var rooms = JSON.parse(roomlist);
+                //console.log("Rooms count: " + rooms.length); //check and see if one of these rooms is 'basicExampleRoom'
+                //console.log("Default Room Name is " + roomName);
+                var incerentFor = 0;
+                for (var room in rooms) {
+                    incerentFor++;
+                    //console.log(incerentFor);
+                    if (rooms[room].name === roomName){
+                            console.log('rooms[room].name : ' + rooms[room].name + '  roomName: ' + roomName);
+                            roomIDForMe = rooms[room]._id;
+                            console.log("yeeeee we find room " + roomName);
+                    }
                 }
-            }
-            if (!roomIDForMe) {
+                if (!roomIDForMe) {
 
-                N.API.createRoom(roomName, function(roomID) {
-                        console.log('Created room with id: ', roomID._id);
-                        console.log('Created room with name: ', roomName);
+                    N.API.createRoom(roomName, function(roomID) {
+                            console.log('Created room with id: ', roomID._id);
+                            console.log('Created room with name: ', roomName);
+                    });
+
+                } else {
+                    console.log('Using room', roomIDForMe);
+                    console.log('Room Name', roomName);
+                }
+                roomIDForMe = '';
+                res.sendFile(__dirname + '/server/room.html', {
+                    isMain: true
                 });
 
-            } else {
-                console.log('Using room', roomIDForMe);
-                console.log('Room Name', roomName);
-            }
-            roomIDForMe = '';
-            res.sendFile(__dirname + '/server/room.html', {
-                isMain: true
-            });
-
-    });
-
+        });
+    }
     //console.log(" test console");
 
 });
