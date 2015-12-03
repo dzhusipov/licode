@@ -69,7 +69,7 @@ window.onload = function () {
   };
 
   var screen = getParameterByName("screen");
-  var config = {audio: true, video: video_constraints, data: true, screen: screen, videoSize: [video_width[0], video_width[1], video_width[0], video_width[1]]};
+  var config = {audio: true, video: true, data: true, screen: screen, videoSize: [video_width[0], video_width[1], video_width[0], video_width[1]]};
   console.log('********************************************************');
   console.log(config);
   console.log('********************************************************');
