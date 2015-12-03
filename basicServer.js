@@ -316,10 +316,10 @@ app.get('/finished/:iin',function(req,res){
     var path = '/var/www/html/rec/';
     var result;
 
-    stats = fs.lstatSync(path + iin + '/');
+   
 
     // Is it a directory?
-    if (stats.isDirectory()) {
+    if (fs.existsSync(path + iin + '/')){
 
         fs.appendFile(path + iin + '/' + iin + '.nfo','final' + "\r\n", function (err) {
             if (err) throw err;
