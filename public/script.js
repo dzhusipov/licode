@@ -70,6 +70,7 @@ window.onload = function () {
 
   var screen = getParameterByName("screen");
   var config = {audio: true, video: video_constraints, data: true, screen: screen, videoSize: [video_width[0], video_width[1], video_width[0], video_width[1]]};
+  console.log(config);
   //var config = video_config;
   // If we want screen sharing we have to put our Chrome extension id. The default one only works in our Lynckia test servers.
   // If we are not using chrome, the creation of the stream will fail regardless.
