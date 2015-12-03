@@ -315,12 +315,24 @@ app.get('/finished/:iin',function(req,res){
     var iin = req.params.iin;
     var path = '/var/www/html/rec/';
     var result;
-    fs.appendFile(path + iin + '/' + iin + '.nfo','final' + "\r\n", function (err) {
-        if (err) throw err;
-        result = 'ok';
+
+    stats = fs.lstatSync(path + iin + '/');
+
+    // Is it a directory?
+    if (stats.isDirectory()) {
+
+        fs.appendFile(path + iin + '/' + iin + '.nfo','final' + "\r\n", function (err) {
+            if (err) throw err;
+            result = 'ok';
+            console.log(result);
+            res.send(result);
+        });
+
+    }else{
+        result = 'directory does not exist';
         console.log(result);
         res.send(result);
-    });
+    }
 
 })
 
