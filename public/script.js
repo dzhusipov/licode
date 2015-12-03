@@ -5,8 +5,8 @@ var roomIdFromName;
 var IIN, ROLE;
 
 var video_width = [
-  190,
-  30
+  320,
+  240
 ];
 
 function getParameterByName(name) {
