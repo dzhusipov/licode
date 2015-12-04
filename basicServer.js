@@ -46,7 +46,10 @@ var isRomFinded = false;
 var room2send = '';
 var roomNameForSearch
 
-var ipList = ['192.168.250.5','192.168.15.15','3'];
+/*
+    White list of ip adresses for access
+*/
+var ipList = ['192.168'];
 
 
 function check_ip_range(ip){
