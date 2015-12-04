@@ -118,7 +118,7 @@ app.get('/dasm/', function(req, res){
     "use strict";
 
     var ip = req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
-
+    console.log('request ip is : ' + ip);
     if (!check_ip_range(ip)) {
         res.send('Muahahahahaha : ' + ip);
     }else{
