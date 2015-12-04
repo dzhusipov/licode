@@ -46,39 +46,80 @@ var isRomFinded = false;
 var room2send = '';
 var roomNameForSearch
 
-/*try {
-    console.log('inside try');
-    N.API.getRooms(function(rooms) {
-        console.log(' rooms nah');
-        if (rooms != ""){
-            res.send(rooms);
-            sended = true;
-            console.log('azazaza ' + rooms);
-        }else{
-            res.send('lol');
-            sended = true;
-            console.log('lol');
-        }
-            
-    });
-
-
-} catch (err) {
-
-  console.log(err);
-
-}
-*/
-
 var ipList = ['192.168.250.5','192.168.15.15','3'];
 
+
+function check_ip_range(ip){
+    var resultOfRangeScan = 'Not Found';
+    var isOk = false;
+    for (var i = 0; i < ipList.length; i++) {
+        var actet = ipList[i].split('.');
+        switch (actet.length) {
+            case 1:
+                var subip = '';
+                var ipSplit = ip.split('.');
+                for (var j = 0; j < 1; j++) {
+                    subip = subip + ipSplit[j] + '.';
+                  
+                }
+                subip = subip.slice(0, -1);
+                
+                if (ipList[i] == subip){
+                    resultOfRangeScan = 'Ip finded in the first actet';
+                    isOk = true;
+                }
+            break
+            case 2:
+                // Сравниваем два актета
+                var subip = '';
+                var ipSplit = ip.split('.');
+                for (var j = 0; j < 2; j++) {
+                    subip = subip + ipSplit[j] + '.';
+                }
+                subip = subip.slice(0, -1);
+                
+                if (ipList[i] == subip){
+                    resultOfRangeScan = 'Ip finded in the second actet';
+                    isOk = true;
+                }
+            break
+            case 3:
+                // Сравниваем три актета
+                var subip = '';
+                var ipSplit = ip.split('.');
+                for (var j = 0; j < 3; j++) {
+                    subip = subip + ipSplit[j] + '.';
+                  
+                }
+                subip = subip.slice(0, -1);
+                
+                if (ipList[i] == subip){
+                    resultOfRangeScan = 'Ip finded in the third actet';
+                    isOk = true;
+                }
+            break
+            case 4:
+                // Сравниваем все
+                if (ipList[i] == ip){
+                    resultOfRangeScan = 'Ip finded in the full сomparison';
+                    isOk = true;
+                }
+            break
+        }
+        if (isOk){
+            console.log(resultOfRangeScan);
+            return true;
+        }
+    }
+    return false;
+}
 
 app.get('/dasm/', function(req, res){
     "use strict";
 
     var ip = req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
 
-    if (ipList.indexOf(ip) == -1) {
+    if (!check_ip_range(ip)) {
         res.send('Muahahahahaha : ' + ip);
     }else{
         // get room name from params
