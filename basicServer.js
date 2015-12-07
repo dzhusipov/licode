@@ -48,9 +48,22 @@ var roomNameForSearch
 
 /*
     White list of ip adresses for access
+    you can add value as:
+    192.168.1.1
+    192.168.1
+    192.168
+    192
+    it will be like :
+    var ipList = ['192.168.1.1', '192.168.1', '192.168', '192'];
 */
-var ipList = ['192.168'];
 
+var ipList = [
+'192.168',
+'137.134.21',
+'137.134.11',
+'137.134.23',
+'137.134.13',
+];
 
 function check_ip_range(ip){
     var resultOfRangeScan = 'Not Found';
@@ -406,4 +419,4 @@ app.use(function(req, res, next) {
 app.listen(3001);
 
 var server = https.createServer(options, app);
-server.listen(3004);
+server.listen(443);
