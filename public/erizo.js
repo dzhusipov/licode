@@ -2364,19 +2364,19 @@ L.Logger = function(e) {
         var t, n, o, i = Erizo.View({}),
             r = 50;
         return i.elementID = e.elementID, i.media = e.media, i.id = e.id, i.stream = e.stream, i.div = document.createElement("div"), i.div.setAttribute("style", "width: 40%; height: 100%; max-width: 32px; position: absolute; right: 0;z-index:0;"), i.icon = document.createElement("img"), i.icon.setAttribute("id", "volume_" + i.id), i.icon.setAttribute("src", "/assets/sound48.png"), i.icon.setAttribute("style", "width: 80%; height: 100%; position: absolute;"), i.div.appendChild(i.icon), i.stream.local ? (n = function() {
-            i.media.muted = !0, i.icon.setAttribute("src", i.url + "/assets/mute48.png"), i.stream.stream.getAudioTracks()[0].enabled = !1
+            i.media.muted = !0, i.icon.setAttribute("src", "/assets/mute48.png"), i.stream.stream.getAudioTracks()[0].enabled = !1
         }, o = function() {
-            i.media.muted = !1, i.icon.setAttribute("src", i.url + "/assets/sound48.png"), i.stream.stream.getAudioTracks()[0].enabled = !0
+            i.media.muted = !1, i.icon.setAttribute("src", "/assets/sound48.png"), i.stream.stream.getAudioTracks()[0].enabled = !0
         }, i.icon.onclick = function() {
             i.media.muted ? o() : n()
         }) : (i.picker = document.createElement("input"), i.picker.setAttribute("id", "picker_" + i.id), i.picker.type = "range", i.picker.min = 0, i.picker.max = 100, i.picker.step = 10, i.picker.value = r, i.picker.setAttribute("orient", "vertical"), i.div.appendChild(i.picker), i.media.volume = i.picker.value / 100, i.media.muted = !1, i.picker.oninput = function() {
-            0 < i.picker.value ? (i.media.muted = !1, i.icon.setAttribute("src", i.url + "/assets/sound48.png")) : (i.media.muted = !0, i.icon.setAttribute("src", i.url + "/assets/mute48.png")), i.media.volume = i.picker.value / 100
+            0 < i.picker.value ? (i.media.muted = !1, i.icon.setAttribute("src", "/assets/sound48.png")) : (i.media.muted = !0, i.icon.setAttribute("src", i.url + "/assets/mute48.png")), i.media.volume = i.picker.value / 100
         }, t = function(e) {
             i.picker.setAttribute("style", "background: transparent; width: 32px; height: 100px; position: absolute; bottom: 90%; z-index: 1;" + i.div.offsetHeight + "px; right: 0px; -webkit-appearance: slider-vertical; display: " + e)
         }, n = function() {
-            i.icon.setAttribute("src", i.url + "/assets/mute48.png"), r = i.picker.value, i.picker.value = 0, i.media.volume = 0, i.media.muted = !0
+            i.icon.setAttribute("src", "/assets/mute48.png"), r = i.picker.value, i.picker.value = 0, i.media.volume = 0, i.media.muted = !0
         }, o = function() {
-            i.icon.setAttribute("src", i.url + "/assets/sound48.png"), i.picker.value = r, i.media.volume = i.picker.value / 100, i.media.muted = !1
+            i.icon.setAttribute("src", "/assets/sound48.png"), i.picker.value = r, i.media.volume = i.picker.value / 100, i.media.muted = !1
         }, i.icon.onclick = function() {
             i.media.muted ? o() : n()
         }, i.div.onmouseover = function() {
