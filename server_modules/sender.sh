@@ -70,7 +70,8 @@ do
 			
 		done
 	else
-		echo "Empty"
+		NOW=$(date +"%Y-%m-%d %T")
+		echo "$NOW Folder is epmty. Nothing to send" >> $LOGFILE
 	fi
 done
 
